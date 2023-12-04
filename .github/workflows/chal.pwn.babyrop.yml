@@ -1,0 +1,78 @@
+name: Challenge babyrop
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "!**/README.md"
+      - "challenges/pwn/babyrop/build/**"
+  workflow_dispatch:
+
+env:
+  TYPE: pwn
+  NAME: babyrop
+  REGISTRY: ghcr.io
+
+jobs:
+  challenge-build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Compile
+        run: |
+          cd challenges/${{ env.TYPE }}/${{ env.NAME }}/build
+          gcc babyrop.c -o babyrop -no-pie -fno-stack-protector
+          mkdir -p ../attachments
+          cp -f babyrop ../attachments/
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: ${{ env.REGISTRY }}/${{ github.repository }}/${{ env.NAME }}
+          tags: |
+            latest
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4
+        with:
+          context: challenges/${{ env.TYPE }}/${{ env.NAME }}/build
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          push: true
+
+      - name: Commit compiled file
+        run: |
+          git config --local user.email "145646018+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add challenges/${{ env.TYPE }}/${{ env.NAME }}/attachments/babyrop
+          git commit --allow-empty -m "Add compiled file"
+      - name: Pull changes
+        run: |
+          git pull --rebase
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
+      - name: Re-pull on failure
+        if: ${{ failure() }}
+        run: git pull --rebase
+      - name: Re-push on failure
+        if: ${{ failure() }}
+        uses: ad-m/github-push-action@master
+        with:
+          force: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
