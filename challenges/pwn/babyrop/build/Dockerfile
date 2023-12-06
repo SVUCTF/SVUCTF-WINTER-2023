@@ -1,4 +1,9 @@
 FROM ubuntu:20.04 AS builder
+
+COPY babyrop.c /babyrop.c
+RUN apt-get update && apt install gcc -y && \
+    gcc -o babyrop babyrop.c -no-pie -fno-stack-protector
+
 FROM ghcr.io/svuctf/base/xinetd:alpine
 
 COPY init.sh /init.sh
@@ -25,6 +30,6 @@ RUN chmod +x /init.sh && \
 
 COPY --from=builder /lib/x86_64-linux-gnu/libc.so.6 /home/ctf/lib/x86_64-linux-gnu/
 COPY --from=builder /lib/x86_64-linux-gnu/ld-linux-x86-64.so.2 /home/ctf/lib64/
-COPY --chown=ctf:ctf --chmod=500 babyrop /home/ctf/babyrop
+COPY --from=builder --chown=ctf:ctf --chmod=500 /babyrop /home/ctf/babyrop
 
 CMD ["xinetd", "-dontfork"]

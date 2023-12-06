@@ -24,13 +24,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Compile
-        run: |
-          cd challenges/${{ env.TYPE }}/${{ env.NAME }}/build
-          gcc babyrop.c -o babyrop -no-pie -fno-stack-protector
-          mkdir -p ../attachments
-          cp -f babyrop ../attachments/
-
       - name: Log in to the Container registry
         uses: docker/login-action@v2
         with:
@@ -51,6 +44,14 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           push: true
+
+      - name: Copy compiled files back to repository
+        run: |
+          mkdir -p attachments
+          docker create --name temp-container ${{ steps.meta.outputs.tags }}
+          docker cp temp-container:/home/ctf/ret2text_32 ./attachments/
+          docker rm temp-container
+        working-directory: challenges/${{ env.TYPE }}/${{ env.NAME }}/
 
       - name: Commit compiled file
         run: |
