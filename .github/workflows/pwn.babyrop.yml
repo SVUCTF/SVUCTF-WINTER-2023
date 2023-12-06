@@ -49,7 +49,7 @@ jobs:
         run: |
           mkdir -p attachments
           docker create --name temp-container ${{ steps.meta.outputs.tags }}
-          docker cp temp-container:/home/ctf/ret2text_32 ./attachments/
+          docker cp temp-container:/home/ctf/babyrop ./attachments/
           docker rm temp-container
         working-directory: challenges/${{ env.TYPE }}/${{ env.NAME }}/
 
