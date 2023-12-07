@@ -1,8 +1,8 @@
-FROM alpine:latest
+FROM scratch
 
-COPY neko-quiz-server /app/neko-quiz-server
-COPY questions.json /app/questions.json
-COPY dist/ /app/dist/
-COPY --chmod=500 init.sh /etc/init.sh
+COPY neko-quiz /neko-quiz
+COPY config.json /config.json
+COPY dist/ /dist/
 
-CMD ["/etc/init.sh"]
+ENTRYPOINT ["/neko-quiz"]
+CMD ["-a", "0.0.0.0"]
