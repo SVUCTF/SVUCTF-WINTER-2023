@@ -19,10 +19,15 @@ void banner() {
          "---------------------------------------------------");
 }
 
+void gadget() {
+    asm("pop %rdx; ret");
+}
+
 void vuln() {
     char buf[100];
+    char buff[30] = "Do you know buffer overflow?\n";
 
-    puts("Do you know buffer overflow?");
+    write(1,buff,0x1e);
     read(0,buf,0x200);
 }
 
