@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>
+        Forgot password
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', filename='/css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <style>
+        .content {
+            height: 500px;
+            width: 1000px;
+            margin-right: auto;
+            margin-left: auto;
+            margin-top: calc((100vh - 470px) / 3);
+        }
+
+    </style>
+</head>
+
+<body class="bg-light">
+<div class="content">
+    <div class="bg-white h-100 w-50 float-end">
+        <img src="{{ url_for('static', filename='img/logo.png') }}" class="h-100 w-100"/>
+    </div>
+    <div class="bg-white h-100 w-50 float-start d-flex flex-column justify-content-center">
+        <div class="text-center mx-4">
+            <h3 class="text-secondary">Forgot password?</h3>
+        </div>
+        <div>
+            <form id="login-form" method="post">
+                <p class="text-center m-4">
+                    <small class="text-muted">Input your email account, that will send a email to you</small>
+                </p>
+
+                <div class="form-group m-4">
+                    <input type="text" class="form-control" id="email" name="email" placeholder="Email">
+                </div>
+
+                <div class="form-group m-4">
+                    <div class="row gx-2">
+                        <div class="col-10">
+                            <input class="form-control" id="code" name="code" placeholder="Verify code">
+                        </div>
+                        <div class="col-2">
+                            <button class="btn btn-primary w-100" id="send-button">Send</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group m-4">
+                    <button type="submit" class="btn btn-primary w-100">
+                        Submit
+                    </button>
+                </div>
+
+                <p class="text-center m-4">
+                    <small id="message" class="{% if error %} text-danger {% else %} text-success {% endif %}">
+                        {{ message }}
+                    </small>
+                </p>
+
+                <p class="text-center m-4">
+                    <small class="text-muted">For forgotten email, please contact the admin:
+                        admin@svuctf.com</small>
+                </p>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+
+<script>
+    function sendCode() {
+        var email = document.getElementById("email").value;
+
+        fetch("/auth/password/forget/send_code", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: "email=" + email,
+        })
+            .then(response => response.json())
+            .then(data => {
+                var resultMessage = document.getElementById("message");
+                resultMessage.innerHTML = data.message;
+                resultMessage.className = data.success ? "text-success" : "text-danger";
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+    document.getElementById("send-button").addEventListener("click", function (event) {
+        event.preventDefault();
+        sendCode();
+    });
+
+</script>
+
+</html>
