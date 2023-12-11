@@ -71,11 +71,11 @@ Date:   Sun Nov 5 18:56:11 2023 +0800
 
 *题外话：*
 
-此次提交是变更了仓库的许可证，从 MIT 更换为了 GPL ，因为[有一题](https://github.com/SVUCTF/SVUCTF-HELLOWORLD-2023/tree/main/challenges/web/missile_trail)借用了其他比赛的源文件，而那个源文件以 GPL 许可证开源。
+此次提交是变更了仓库的许可证，从 MIT 更换为了 GPLv3 ，因为[有一题](https://github.com/SVUCTF/SVUCTF-HELLOWORLD-2023/tree/main/challenges/web/missile_trail)借用了其他比赛的源文件，而那个源文件以 GPL 许可证开源。
 
 GPL 许可证的其中一个特性是：如果某个项目使用了以 GPL 许可证开源的代码，那么它的源代码也必须开源，且也要使用 GPL 许可证。
 
-所以我们的整个仓库也都要更新为 GPL 许可证了。
+所以那题的部分需要用 GPLv3 许可证，于是干脆整个仓库都更新为 GPLv3 许可证了。
 
 不同的开源许可证有不同的约束，希望同学们都能遵守开源协议。
 
