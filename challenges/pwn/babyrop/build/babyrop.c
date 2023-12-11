@@ -27,7 +27,7 @@ void vuln() {
     char buf[100];
     char buff[30] = "Do you know buffer overflow?\n";
 
-    write(1,buff,0x1e);
+    write(1,buff,sizeof(buff));
     read(0,buf,0x200);
 }
 
