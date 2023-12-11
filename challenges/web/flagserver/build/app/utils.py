@@ -1,3 +1,4 @@
+import os
 import random
 import secrets
 import string
@@ -23,7 +24,8 @@ def captcha_image(key: str) -> Tuple[str, BytesIO]:
 
     random.seed(key)
 
-    font = ImageFont.truetype("assets/Vera.ttf", font_size)
+    font_path = os.path.join(os.path.dirname(__file__), "assets/Vera.ttf")
+    font = ImageFont.truetype(font_path, font_size)
 
     text = gettext(font_num)
     size = getsize(font, text)
