@@ -10,8 +10,8 @@ from flask import (
     url_for,
     make_response,
 )
-from config import Config
-from utils import captcha_image, random_code, random_password
+from .config import Config
+from .utils import captcha_image, random_code, random_password
 
 app = Flask(__name__)
 app.config.from_object(Config())
@@ -28,6 +28,11 @@ class User:
 USERS: List[User] = [
     User("admin", "admin@svuctf.com", secrets.token_hex(16), secrets.token_hex(8))
 ]
+
+
+@app.route("/")
+def index():
+    return redirect(url_for("home"))
 
 
 @app.route("/home")
@@ -105,7 +110,3 @@ def captcha_img(key: str):
     response.headers.set("Content-Type", "image/jpeg")
 
     return response
-
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
