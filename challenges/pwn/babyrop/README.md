@@ -11,9 +11,14 @@
 
 ## 题目解析
 - 源码：[babyrop.c](build/babyrop)
-- 考点：ret2libc
+- 考点：64位下的 ROP - ret2libc
 
-#### 查看文件信息
+`ret2libc` 即控制程序执行 libc 中的函数通常是返回至某个函数的 plt 处或者函数的具体位置 (即函数对应的 got 表项的内容)。一般情况下，我们会选择执行 system("/bin/sh")，故而此时我们需要知道 system 函数的地址。
+
+`动态链接` 是指在程序装载时通过 `动态链接器` 将程序所需的所有 `动态链接库(Dynamic linking library)` 装载至进程空间中（ 程序按照模块拆分成各个相对独立的部分），当程序运行时才将他们链接在一起形成一个完整程序的过程。
+
+不是很能理解的同学看[这里](https://www.freebuf.com/news/182894.html)（这篇文章详细的阐述了 `StackOverFlow-Ret2libc` 的原理以及利用思路）
+### 查看文件信息
 查看文件类型（`file` 命令）：
 ```shell
 $ file babyrop
@@ -151,6 +156,12 @@ Gadgets information
 0x000000000040133d : pop rsp ; pop r13 ; pop r14 ; pop r15 ; ret
 0x000000000040101a : ret
 ```
+这里我们泄露 write 的地址，基本利用思路如下
+- 泄露 write 地址
+- 获取 libc 版本
+- 获取 system 地址与 /bin/sh 的地址
+- 再次执行源程序
+- 触发栈溢出执行 system(‘/bin/sh’)
 
 ### 编写利用程序
 [exp.py](writeup/exp.py)
