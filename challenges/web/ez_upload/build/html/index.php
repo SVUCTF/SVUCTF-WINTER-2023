@@ -50,7 +50,7 @@
 <body>
 
   <div id="upload-container">
-    <h2>文件上传</h2>
+    <h2>传上文件</h2>
     <img id="logo" src="zzz.jpg" alt="Logo">
     <form id="upload-form" action="" method="post" enctype="multipart/form-data">
       <input type="file" name="upload" accept="" required>
@@ -59,15 +59,6 @@
     </form>
     <div id="message">
       <?php
-      function deleteFile($dir, $filename)
-      {
-        if (unlink($dir . $filename)) {
-          echo "$filename 删除完成";
-        } else {
-          echo "$filename 删除失败";
-        }
-      }
-
       if (isset($_FILES['upload'])) {
         $tmp_name = $_FILES['upload']['tmp_name'];
         $dir = "./upload/";
@@ -84,19 +75,13 @@
 
         // 等待3秒（sleep），然后尝试删除文件
         sleep(3);
+        unlink($dir . $filename);
+        
+        echo '<div id="error-message">阿祖别传啦，里面全是 Webshell</div>';
 
-        deleteFile($dir, $filename);
       } else {
         // 如果没有上传文件，输出提示消息
         echo "请选择上传文件";
-      }
-      ?>
-    </div>
-    <div id="error-message">
-      <?php
-      // 输出错误消息
-      if (isset($_FILES['upload']) && move_uploaded_file($tmp_name, $dir . $filename) === false) {
-        echo "$filename 文件上传失败<br/>";
       }
       ?>
     </div>
