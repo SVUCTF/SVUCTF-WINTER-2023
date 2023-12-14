@@ -5,7 +5,7 @@ on:
     branches: ["main"]
     paths:
       - "!**/README.md"
-      - "challenges/web/writeup_channelbuild/**"
+      - "challenges/web/writeup_channel/build/**"
   workflow_dispatch:
 
 env:
