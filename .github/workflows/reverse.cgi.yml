@@ -10,7 +10,7 @@ on:
 
 env:
   TYPE: reverse
-  NAME: cgi
+  NAME: CGI
   REGISTRY: ghcr.io
 
 jobs:
