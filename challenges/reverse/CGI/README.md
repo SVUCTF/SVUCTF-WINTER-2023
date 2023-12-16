@@ -1,19 +1,19 @@
-# Web 逆向
+# CGI
 
 - 作者：pn1fg
-- 参考：SVUCTF-2023
+- 参考：-
 - 难度：Baby/Trivial/Easy/Normal/Medium/Hard/Expert/Insane
 - 分类：Reverse
-- 镜像：
-- 端口：
+- 镜像：[svuctf-winter-2023/cgi](ghcr.io/svuctf/svuctf-winter-2023/cgi:latest)
+- 端口：80
 
 # 题目描述
 
-@pn1fg：「每次都是 Web，Pwn 有动态容器，其它的方向没意思...」  
-@13m0n4de：「Reverse 也可以搞！」  
-@13m0n4de：「可以试着用 C 语言写个 CGI...」  
-@pn1fg：「太难了，又得会逆向，又得会 Web 才能写这一题...」
-@13m0n4de：「热血沸腾的组合技...」
+@pn1fg：「每次都是 Web，Pwn 有动态容器，其它的方向没意思...」\
+@13m0n4de：「Reverse 也可以...」\
+@13m0n4de：「用 C 语言写个 CGI...」\
+@pn1fg：「太难了，又得会逆向，又得会 Web 才能写这一题...」\
+@13m0n4de：「热血沸腾的组...」
 
 # 题目解析
 
@@ -23,18 +23,22 @@
 `CGI` （Common Gateway Interface，“通用网关接口”），是一种用于在Web服务器和外部应用程序之间传递数据的标准协议。CGI程序能够处理从Web浏览器发送到服务器的HTTP请求，并根据请求生成动态网页内容。
 
 ### 查看文件信息
+
 查壳：
+
 ```shell
 $ diec challenge.cgi
 ELF64
     Operation system: Unix(-)[DYN AMD64-64]
     Compiler: gcc((GNU) 12.2.1 20230201)[DYN AMD64-64]
 ```
+
 64位，ELF可执行文件
 
 反编译文件：
 
 - 查看`main`函数
+
 ```c++
 ulong main(void)
 
@@ -82,6 +86,7 @@ ulong main(void)
     return 0;
 }
 ```
+
 上面的题目解析中也提到了本题考察的是 `CGI程序` 逆向，不太能理解的可以大概将它理解成一种制作动态网页的程序，还需要了解 `CGI` 程序的默认访问路径 `cgi-bin/文件名`
 
 分析程序，这整个程序大体是在写一个简单的登录功能，`getenv` 函数的作用是获取环境变量值，然后程序接收并解析 `POST` 传参的内容，紧接着是 `if` 条件判断，如果 `username` 的值为 `pn1fg` 并且 `password` 的值为 `pxpx` 即可以读取 `flag`，所以这题我们只需要向远程环境发送一个 `POST` 请求即可
@@ -89,6 +94,7 @@ ulong main(void)
 ### 编写利用程序
 
 - 利用`curl`：
+
 ```
 $ curl "http://127.0.0.1/cgi-bin/challenge.cgi" -d "username=pn1fg&password=pxpx"
 <html><head><title>Login</title></head><body>
@@ -100,5 +106,4 @@ $ curl "http://127.0.0.1/cgi-bin/challenge.cgi" -d "username=pn1fg&password=pxpx
 ```
 
 - 利用 `hackbar` ：
-![](writeup/images/1.png)
-
+  ![](writeup/images/1.png)

@@ -44,3 +44,36 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           push: true
+
+      - name: Copy compiled files back to repository
+        run: |
+          mkdir -p attachments
+          docker create --name temp-container ${{ steps.meta.outputs.tags }}
+          docker cp temp-container:/usr/local/apache2/cgi-bin/challenge.cgi ./attachments/
+          docker rm temp-container
+        working-directory: challenges/${{ env.TYPE }}/${{ env.NAME }}/
+
+      - name: Commit compiled file
+        run: |
+          git config --local user.email "145646018+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add challenges/${{ env.TYPE }}/${{ env.NAME }}/attachments/challenge.cgi
+          git commit --allow-empty -m ":package: [Reverse]CGI Add compiled file"
+      - name: Pull changes
+        run: |
+          git pull --rebase
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
+      - name: Re-pull on failure
+        if: ${{ failure() }}
+        run: git pull --rebase
+      - name: Re-push on failure
+        if: ${{ failure() }}
+        uses: ad-m/github-push-action@master
+        with:
+          force: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
