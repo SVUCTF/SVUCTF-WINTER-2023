@@ -49,7 +49,7 @@ jobs:
         run: |
           mkdir -p attachments
           docker create --name temp-container ${{ steps.meta.outputs.tags }}
-          docker cp temp-container:cgi-bin/challenge.cgi ./attachments/
+          docker cp temp-container:/usr/local/apache2/cgi-bin/challenge.cgi ./attachments/
           docker rm temp-container
         working-directory: challenges/${{ env.TYPE }}/${{ env.NAME }}/
 
