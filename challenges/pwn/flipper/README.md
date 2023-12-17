@@ -4,7 +4,7 @@
 - 参考：[Hackergame-2023-超精准的宇宙射线模拟器](https://github.com/USTC-Hackergame/hackergame2020-writeups/tree/master/official/%E8%B6%85%E7%B2%BE%E5%87%86%E7%9A%84%E5%AE%87%E5%AE%99%E5%B0%84%E7%BA%BF%E6%A8%A1%E6%8B%9F%E5%99%A8) / [Hack.lu-2023-bit](https://ctftime.org/writeup/7894)
 - 难度：Baby/Trivial/Easy/Normal/Medium/Hard/Expert/Insane
 - 分类：Pwn
-- 镜像：[svuctf-winter-2023/flipper](ghcr.io/svuctf/svuctf-winter-2023/flipper:latest)
+- 镜像：[svuctf-winter-2023/flipper](https://ghcr.io/svuctf/svuctf-winter-2023/flipper:latest)
 - 端口：70
 
 ## 题目描述
@@ -170,7 +170,7 @@ $ python
 
 所以我们输入 `0x004012d9 7` 就可以让程序一直循环，获得更多翻转 Bit 的机会。
 
-（`0x004012d9` 指的是 `E8 03 FE FF FF` 的第二个字节 `03`，如果使用 `0x004012d9` 就是 `E8`）
+（`0x004012d9` 指的是 `E8 03 FE FF FF` 的第二个字节 `03`，如果使用 `0x004012d8` 就是 `E8`）
 
 那我怎么会知道翻转 `0x004012d9` 的第 7 个 Bit 刚好就能跳到这里呢？其实是运气。
 
