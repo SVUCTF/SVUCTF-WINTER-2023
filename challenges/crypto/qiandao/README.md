@@ -1,7 +1,7 @@
 # 签到
 
 - 作者：only
-- 参考：SVUCTF-2023
+- 参考：-
 - 难度：Baby/Trivial/Easy/Normal/Medium/Hard/Expert/Insane
 - 分类：Crypto
 - 镜像：-
