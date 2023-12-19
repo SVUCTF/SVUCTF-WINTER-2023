@@ -1,11 +1,11 @@
-# 题目名
+# nc
 
 - 作者：13m0n4de
 - 参考：-
 - 难度：Baby/Trivial/Easy/Normal/Medium/Hard/Expert/Insane
-- 分类：Misc/Crypto/Pwn/Web/Reverse/Blockchain/Forensics/Mobile/PPC
-- 镜像：-
-- 端口：-
+- 分类：Pwn
+- 镜像：[svuctf-winter-2023/nc](https://ghcr.io/svuctf/svuctf-winter-2023/nc:latest)
+- 端口：70
 
 ## 题目描述
 
@@ -13,4 +13,6 @@
 
 ## 题目解析
 
-<analysis>
+```
+cat /flag 1>&0
+```
