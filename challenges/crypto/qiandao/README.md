@@ -1,6 +1,6 @@
 # 签到
 
-- 作者：Cee-YSKM
+- 作者：Cee
 - 参考：-
 - 难度：Baby/Trivial/Easy/Normal/Medium/Hard/Expert/Insane
 - 分类：Crypto
@@ -9,7 +9,7 @@
 
 ## 题目描述
 
-一道基于base64的签到题目
+圣诞夜到了，学长没什么好送的，送你们一个flag吧~
 
 ## 题目解析
 
