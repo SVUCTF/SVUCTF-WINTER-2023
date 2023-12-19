@@ -1,6 +1,6 @@
-# simple_rsa
+# Simple-RSA
 
-- 作者：Cee-YSKM
+- 作者：Cee
 - 参考：-
 - 难度：Baby/Trivial/Easy/Normal/Medium/Hard/Expert/Insane
 - 分类：Crypto
@@ -9,9 +9,11 @@
 
 ## 题目描述
 
-给出p, c, e, 而且p,q是循环生成的两个大素数。
+天下风云出我辈，一入江湖岁月催。p、q二者得其一便可得flag！
 
 ## 题目解析
+
+给出p, c, e, 而且p,q是循环生成的两个大素数。
 
 ```python
 from Crypto.Util.number import *
