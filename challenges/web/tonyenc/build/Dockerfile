@@ -1,6 +1,7 @@
 FROM ghcr.io/svuctf/base/php:latest as builder
 
 COPY tonyenc /tonyenc
+COPY core.h /tonyenc/core.h
 WORKDIR /tonyenc
 
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories && \
