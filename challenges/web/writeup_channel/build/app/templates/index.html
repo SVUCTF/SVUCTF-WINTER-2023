@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>SVUCTF-WINTER-2023 解题过程记录</title>
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <style>
+        .background-wrap {
+            opacity: 0.3;
+            background:
+                linear-gradient(
+                    to top,
+                    #dbddbb,
+                    #6ba587,
+                    #d5d88d,
+                    #88b884
+                );
+            );
+            mask: url({{ url_for('static', filename='img/pattern.svg') }}) repeat center;
+            mask-size: 420px auto;
+        }
+    </style>
+</head>
+
+<body class="bg-black">
+
+<div class="background-wrap bg-black w-100 h-100 position-fixed z-index-n1">
+</div>
+
+<header style="background-color: #222222;">
+    <div class="container col-10">
+        <div class="p-2">
+            <img class="rounded-circle float-start me-3 mt-1" width="36px" height="36px"
+                 src="{{ url_for('static', filename='img/avatar.jpg') }}">
+            <p class="text-white text-nowrap mb-0">SVUCTF-WINTER-2023 解题过程记录</p>
+            <small class="text-secondary text-nowrap">11 位订阅者</small>
+        </div>
+    </div>
+</header>
+
+<main>
+    <div class="container col-10">
+        <div class="row">
+            <section class="col-8">
+                {% for message in messages %}
+                <div class="my-4">
+                    <img class="rounded-circle float-start me-3 mt-1" width="36px" height="36px"
+                         src="{{ url_for('static', filename='img/avatar.jpg') }}">
+                    <div class="card" style="background-color: #222222;">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <div>
+                                    <p class="card-title text-info">SVUCTF-WINTER-2023 解题过程记录</p>
+                                    <p class="card-text text-white">
+                                        {{ message.text | safe }}
+                                    </p>
+                                </div>
+                            </div>
+                            <p class="card-text text-secondary float-end">
+                                {{ message.time }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </section>
+            <section class="col-4">
+                <div class="card my-4" style="background-color: #222222;">
+                    <div class="card-body">
+                        <form method="post">
+                            <div class="form-outline mb-3">
+                                <label class="form-label" for="message">我要投稿</label>
+                                <textarea class="form-control" id="message" name="message" rows="4"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-secondary w-100">发送</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+</main>
+</body>
+</html>

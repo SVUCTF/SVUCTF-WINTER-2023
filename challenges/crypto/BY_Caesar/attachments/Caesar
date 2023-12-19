@@ -1,0 +1,16 @@
+flag = ""
+
+ascii_values = [ord(char) - 5 for char in flag]
+
+for i in range(len(ascii_values)):
+    if (i + 1) % 2 != 0:
+        ascii_values[i] -= 2
+    else:
+        ascii_values[i] += 2
+    ascii_values[i] += 5
+
+en_flag = ''.join(chr(value) for value in ascii_values)
+
+print(en_flag)
+#en_flag：{ccdd329`;2:3/bc45+92d7//817+g2:`857_}ecjh
+
