@@ -4,7 +4,7 @@
 - 参考：-
 - 难度：Baby/Trivial/Easy/Normal/Medium/Hard/Expert/Insane
 - 分类：Reverse
-- 镜像：[svuctf-winter-2023/cgi](ghcr.io/svuctf/svuctf-winter-2023/cgi:latest)
+- 镜像：[svuctf-winter-2023/cgi](https://ghcr.io/svuctf/svuctf-winter-2023/cgi:latest)
 - 端口：80
 
 # 题目描述

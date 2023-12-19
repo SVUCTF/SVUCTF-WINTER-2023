@@ -4,7 +4,7 @@
 - 参考：-
 - 难度：Baby/Trivial/Easy/Normal/Medium/Hard/Expert/Insane
 - 分类：Web
-- 镜像：[svuctf-winter-2023/tonyenc](ghcr.io/svuctf/svuctf-winter-2023/tonyenc:latest)
+- 镜像：[svuctf-winter-2023/tonyenc](https://ghcr.io/svuctf/svuctf-winter-2023/tonyenc:latest)
 - 端口：80
 
 ## 题目描述
@@ -29,8 +29,8 @@
 应该能搜到不少介绍，它们会告诉你 PHP 源码加密/保护 有几种类型：
 
 1. 源代码混淆
-2. OPCODE 混淆
-3. 修改解释引擎
+1. OPCODE 混淆
+1. 修改解释引擎
 
 其中在部署上又分为无扩展和有扩展方案，先别着急看那么多文章，我们的首要任务是判断这题的文件属于哪个方案，高效的捷径。不然大脑占用过高，回到题目的时候宕机了。
 

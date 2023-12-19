@@ -1,6 +1,6 @@
 # 签到
 
-- 作者：only
+- 作者：Cee-YSKM
 - 参考：-
 - 难度：Baby/Trivial/Easy/Normal/Medium/Hard/Expert/Insane
 - 分类：Crypto
@@ -9,7 +9,7 @@
 
 ## 题目描述
 
-一道基于base64的签到题目 
+一道基于base64的签到题目
 
 ## 题目解析
 
@@ -31,7 +31,7 @@ VZu9GZsxWZXt3ZhxmZ==9NXaoR3Xzl2XzlGa09
 ZmxhZ3tXZWxsZG9uZV90aGlzX2lzX3RoaXN9==
 ```
 
-使用base64 
+使用base64
 
 ```
 flag{Welldone_this_is_this}

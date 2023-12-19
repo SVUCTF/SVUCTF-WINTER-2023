@@ -1,7 +1,7 @@
 # esrever
 
 - 作者：13m0n4de
-- 参考：SVUCTF-2023
+- 参考：-
 - 难度：Baby/Trivial/Easy/Normal/Medium/Hard/Expert/Insane
 - 分类：Misc
 - 镜像：-
