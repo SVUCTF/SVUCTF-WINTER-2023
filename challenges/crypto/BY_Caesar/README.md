@@ -1,7 +1,7 @@
-# 题目名
+# 变异凯撒
 
 - 作者：Cee
-- 参考：SVUCTF-2023
+- 参考：-
 - 难度：Baby/Trivial/Easy/Normal/Medium/Hard/Expert/Insane
 - 分类：Crypto
 - 镜像：-
@@ -9,7 +9,7 @@
 
 ## 题目描述
 
-一道逆向编译的题目
+百度一下https://zh.wikipedia.org/zh-sg/%E5%87%B1%E6%92%92%E5%AF%86%E7%A2%BC
 
 ## 题目解析
 
@@ -27,4 +27,3 @@ for i, char in enumerate('{ccdd329`;2:3/bc45+92d7//817+g2:`857_}ecjh'):
 
 print(flag[::-1])
 ```
-
