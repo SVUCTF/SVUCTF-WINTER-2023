@@ -1,15 +1,13 @@
 # 题目名
 
 - 作者：Cee-YSKM
-- 参考：SVUCTF-2023
+- 参考：-
 - 难度：Baby/Trivial/Easy/Normal/Medium/Hard/Expert/Insane
 - 分类：Crypto
 - 镜像：-
 - 端口：-
 
 ## 题目描述
-
-一道逆向编译的题目
 
 ## 题目解析
 
@@ -27,4 +25,3 @@ for i, char in enumerate('{ccdd329`;2:3/bc45+92d7//817+g2:`857_}ecjh'):
 
 print(flag[::-1])
 ```
-
