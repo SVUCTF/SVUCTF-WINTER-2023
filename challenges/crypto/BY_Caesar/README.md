@@ -1,6 +1,6 @@
 # 题目名
 
-- 作者：Cee-YSKM
+- 作者：Cee
 - 参考：SVUCTF-2023
 - 难度：Baby/Trivial/Easy/Normal/Medium/Hard/Expert/Insane
 - 分类：Crypto
