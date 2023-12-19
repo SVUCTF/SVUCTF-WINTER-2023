@@ -34,13 +34,13 @@
 
 其中在部署上又分为无扩展和有扩展方案，先别着急看那么多文章，我们的首要任务是判断这题的文件属于哪个方案，高效的捷径。不然大脑占用过高，回到题目的时候宕机了。
 
-其中无拓展方案只有源代码混淆，在用这种方案混淆的源文件中，你应该能看到 `<?php` 标签，许多可见的关键字和函数名，当然也有很多不可见字符，它们就像夹在 PHP 代码中一样。诸如此类特征。
+其中无拓展方案只有*源代码混淆*，在用这种方案混淆的源文件中，你应该能看到 `<?php` 标签，许多可见的关键字和函数名，当然也有很多不可见字符，它们就像夹在 PHP 代码中一样。诸如此类特征。
 
 因为无拓展方案必须要求文件内容本身是合规的 PHP 语法，再在此基础上混淆变量函数等名称（使用各种函数进行编码加密）。
 
 这里的情况并不符合，`index.php` 完全是乱糟糟的不可见字符。
 
-所以，它至少是有拓展的。至于那到底是三种方案里的哪种，可以先试着找到它用的拓展找出来。
+所以，它至少是有拓展的。至于那到底是三种方案里的哪种，可以先把它用的拓展找出来。
 
 访问 PHPINFO 页面，翻到 `Configuration` 栏目。
 
@@ -52,7 +52,7 @@
 
 ![phpinfo_tonyenc](writeup/images/phpinfo_tonyenc.png)
 
-然后你就应该能搜到很多指资料了，包括但不限于两个仓库：
+这下应该能搜到很多指资料了，包括但不限于两个仓库：
 
 - https://github.com/lihancong/tonyenc
 - https://gitee.com/lfveeker/tonyenc
@@ -61,13 +61,13 @@
 
 根据特点描述，可以判断出它不是 *OPCODE混淆* 也不是 *修改解释引擎* 类型的，还原起来会相对简单不少。
 
-文档中说明，它的使用方式是：先编译 .so 扩展文件，将 .so 放入 PHP 扩展文件夹，并在修改配置文件中添加扩展文件名，然后使用自带工具加密 PHP 文件。
+文档中说明，它的使用方式是：先编译 .so 扩展文件，将 .so 放入 PHP 扩展文件夹，并在修改配置文件中添加扩展文件名，最后使用自带工具加密 PHP 文件。
 
 那么我们可以先读取配置文件 `php.ini` ，配置文件路径在 PHPINFO 中有，当然试几个默认路径也可以。
 
 ![phpinfo_ini](writeup/images/phpinfo_ini.png)
 
-读一下 `/usr/local/etc/php/conf.d/php.ini` 的内容：
+`/usr/local/etc/php/conf.d/php.ini` 的内容：
 
 ```ini
 memory_limit = 256M
@@ -76,9 +76,9 @@ upload_max_filesize = 10M
 extension=tonyenc.so
 ```
 
-现在我们知道扩展的文件名 `tonyenc.so` 了。
+我们可以得知扩展的文件名： `tonyenc.so` 。
 
-扩展目录可以在 `extension_dir` 里找到：`/usr/local/lib/php/extensions/no-debug-non-zts-20220829`
+扩展目录能在 `extension_dir` 一栏里找到：`/usr/local/lib/php/extensions/no-debug-non-zts-20220829`
 
 ![phpinfo_extension_dir](writeup/images/phpinfo_extension_dir.png)
 
@@ -102,7 +102,7 @@ RE 环节。
 0x00001258    2     48 sym.tonyenc_ext_fopen.cold
 ```
 
-我们先从 `tonyenc_ext_fopen` 开始，从它的名称可以猜测是打开 PHP 文件的函数，跟着它，应该就能找到解密的逻辑。
+我们先从 `tonyenc_ext_fopen` 开始，从猜测它是打开 PHP 文件的函数，跟着它，应该就能找到解密的逻辑。
 
 ```c
 __int64 __fastcall tonyenc_ext_fopen(FILE *stream, __int64 a2, FILE **a3)
@@ -139,7 +139,7 @@ __int64 __fastcall tonyenc_ext_fopen(FILE *stream, __int64 a2, FILE **a3)
 
 先使用 `fseek` 移动了 `20` 位，跳过了特征头，之后将数据读出调用 `tonyenc_decode` 解密。
 
-跟进 `tonyenc_decode` 会发现它和 `tonyenc_encode` 是一个函数。
+跟进 `tonyenc_decode` 会发现它和 `tonyenc_encode` 是同一个函数。
 
 ```c
 void __fastcall tonyenc_encode(char *data, size_t len)
@@ -162,9 +162,9 @@ void __fastcall tonyenc_encode(char *data, size_t len)
 }
 ```
 
-代码逻辑很简单，更简单的是加解密函数共用，照着逻辑写一遍就可以了。
+代码逻辑很简单，更幸运的是加解密函数共用，照着逻辑写一遍就可以了。
 
-我们还需要查看 `tonyenc_key` 的值，根据 `(i + v2 + tonyenc_key[v2]) % 0x1C` 推断出长度为 0x1C 。
+查看 `tonyenc_key` 的值，根据 `(i + v2 + tonyenc_key[v2]) % 0x1C` 推断出长度为 0x1C 。
 
 ```asm
 [0x00001410]> pd 1 @ reloc.tonyenc_key 
