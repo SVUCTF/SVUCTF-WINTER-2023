@@ -1,11 +1,14 @@
 # solver
+
 - 作者：pn1fg
 - 参考：SVUCTF-2023
 - 难度：Baby/Trivial/Easy/Normal/Medium/Hard/Expert/Insane
 - 分类：Reverse
 - 镜像：-
 - 端口：-
+
 ## 题目描述
+
 @pn1fg：「唉，苦恼 Reverse 出什么题目...」
 
 @pn1fg：「我打算用 Rust 写一个，练练手。」
@@ -29,12 +32,16 @@
 @13m0n4de：「Pwn???」
 
 @pn1fg：「走！」
+
 ## 题目解析
 
 - 源码：[main.rs](build/main.rs)
 - 考点：Rust逆向，OXR，z3约束求解
+
 ### 查看文件信息
+
 查壳：
+
 ```
 $ diec solver
 ELF64
@@ -43,11 +50,13 @@ ELF64
     Compiler: Rust(-)[DYN AMD64-64]
     Compiler: gcc(3.X)[DYN AMD64-64]
 ```
+
 64位 ELF 可执行文件
 
 反编译文件
 
 - 查看`main`函数
+
 ```rust
 void dbg.main(void)
 {
@@ -77,9 +86,11 @@ void dbg.main(void)
   return;
 } 
 ```
+
 `main` 函数中接收了五个整形值，然后调用了 `flag_checker` 函数
 
 - 查看 `flag_checker` 函数
+
 ```rust
 void dbg.flag_checker(uint64_t arg1, uint64_t arg2, uint64_t arg3, uint64_t arg4, uint64_t arg5)
 
@@ -208,12 +219,13 @@ void dbg.flag_checker(uint64_t arg1, uint64_t arg2, uint64_t arg3, uint64_t arg4
     return;
 }
 ```
+
 工具的问题，大家用 IDA 看的时候可能会舒服一点
 
-`flag_checker` 函数中首先将我们输入的五个整形值进行了异或，然后在 `if/else` 条件判断语句中列出了类似于方程组的条件，分析到这本题的大致思路就是先利用 `z3
-约束求解器` 解出五个整形值，随后进行异或即可
+`flag_checker` 函数中首先将我们输入的五个整形值进行了异或，然后在 `if/else` 条件判断语句中列出了类似于方程组的条件，分析到这本题的大致思路就是先利用 `z3 约束求解器` 解出五个整形值，随后进行异或即可
 
 ### 编写利用程序
+
 ```python
 from z3 import *
 
@@ -246,4 +258,5 @@ e = result[e].as_long() ^ 0xbde
 print("\nThese Five numbers:")
 print("a =",a,"\nb =",b,"\nc =",c,"\nd =",d,"\ne =",e)
 ```
+
 **注意类型的转换**

@@ -1,7 +1,7 @@
 # 题目名
 
-- 作者：only
-- 参考：SVUCTF-WINTER-2023
+- 作者：Cee-YSKM
+- 参考：-
 - 难度：Baby/Trivial/Easy/Normal/Medium/Hard/Expert/Insane
 - 分类：Crypto
 - 镜像：-
