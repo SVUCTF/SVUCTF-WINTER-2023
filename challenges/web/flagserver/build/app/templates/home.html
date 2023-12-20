@@ -17,21 +17,20 @@
             margin-left: auto;
             margin-top: calc((100vh - 470px) / 3);
         }
-
     </style>
 </head>
 
 <body class="bg-light">
-<div class="content">
-    <div class="bg-white h-100 w-50 float-end">
-        <img src="{{ url_for('static', filename='img/logo.png') }}" class="h-100 w-100"/>
-    </div>
-    <div class="bg-white h-100 w-50 float-start d-flex flex-column justify-content-center">
-        <div class="text-center">
-            <p class="text-primary">{{ flag }}</p>
+    <div class="content">
+        <div class="bg-white h-100 w-50 float-end">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" class="h-100 w-100" />
+        </div>
+        <div class="bg-white h-100 w-50 float-start d-flex flex-column justify-content-center">
+            <div class="text-center">
+                <p class="text-primary">{{ flag }}</p>
+            </div>
         </div>
     </div>
-</div>
 
 </body>
 
