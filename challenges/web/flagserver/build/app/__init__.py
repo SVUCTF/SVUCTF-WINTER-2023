@@ -50,7 +50,7 @@ def login():
         password = request.form["password"]
         captcha = request.form["captcha"]
 
-        if captcha.lower() != session.get("captcha").lower():
+        if captcha.lower() != session["captcha"].lower():
             return render_template("login.html", message="Invalid CAPTCHA")
 
         if user := next(
