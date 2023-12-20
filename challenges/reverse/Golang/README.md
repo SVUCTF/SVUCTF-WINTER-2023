@@ -1,7 +1,7 @@
 # Golang
 
 - 作者：pn1fg
-- 参考：SVUCTF-2023
+- 参考：-
 - 难度：Baby/Trivial/Easy/Normal/Medium/Hard/Expert/Insane
 - 分类：Reverse
 - 镜像：-
@@ -10,30 +10,49 @@
 ## 题目描述
 
 ## 题目解析
+
 - 源码：[main.go](build/main.go)
+- 附件：[golang](attachments/golang)
 - 考点：Go 语言逆向，Base64（更换字符表）
 
 ### 查看文件信息
 
 查壳（`diec`）：
+
 ```shell
-$ diec main
+$ diec golang
 ELF64
     Operation system: Unix(-)[EXEC AMD64-64]
     Compiler: Go(1.10.x-1.17.x)[EXEC AMD64-64]
 ```
-无壳
+
+无壳，Golang 编写的程序。
 
 查看文件类型（`file`）：
+
 ```shell
-$ file main
-main: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), statically linked, Go BuildID=Edm8WlskT-DC-VbimwnB/hvFL5kDvLyUEd-A_MZiD/8JxUY-UOVv9nv8SKuJox/TgohkFrtk2D3lwitBCHK, stripped
+$ file golang
+golang: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), statically linked, Go BuildID=Edm8WlskT-DC-VbimwnB/hvFL5kDvLyUEd-A_MZiD/8JxUY-UOVv9nv8SKuJox/TgohkFrtk2D3lwitBCHK, stripped
 ```
+
 64位 ELF 可执行文件,去除符号（`stripped`）
 
-这里 ELF 文件去除了符号，`IDA` 的版本在`8.0`一下的反编译出来会一团糟，这里需要大家去了解一下 `go` 语言去符号化还原
+我们知道去符号后的程序难以分析，但 Go 二进制文件其实没有完全 strip ，其中存在某些结构中依然保存着函数名信息，因为 Golang 的二进制文件里打包进去了 runtime 和 GC 模块，还有独特的 Type Reflection(类型反射) 和 Stack Trace 机制，它们都需要这些信息。
 
-反编译 `main` 函数
+推荐文章：
+
+1. [Go二进制文件逆向分析从基础到进阶——综述](https://www.anquanke.com/post/id/214940)
+1. [Go二进制文件逆向分析从基础到进阶——MetaInfo、函数符号和源码文件路径列表](https://www.anquanke.com/post/id/215419)
+1. [Go二进制文件逆向分析从基础到进阶——数据类型](https://www.anquanke.com/post/id/215820)
+1. [Go二进制文件逆向分析从基础到进阶——itab与strings](https://www.anquanke.com/post/id/218377)
+1. [Go二进制文件逆向分析从基础到进阶——Tips与实战案例](https://www.anquanke.com/post/id/218674)
+
+在综述中作者推荐了一些 插件/工具 来帮助我们还原 Golang 符号。这是文章作者制作的插件：[0xjiayu/go_parser](https://github.com/0xjiayu/go_parser)
+
+或者可以使用 IDA 8.x ，对 Golang 进行了更好的支持，不需要做额外的操作就能很舒适地反编译。
+
+`main_main` 函数
+
 ```go
 void __fastcall main_main()
 {
@@ -140,12 +159,25 @@ v39,v40,v41,v42,v43,v44,v45,v46,v47,v48,v49,v50,v51,v52,v53,v54[0],v54[1],v54[2]
   fmt_Println((unsigned int)&v66, 1, 1, (unsigned int)v60, 36, v29, v30, v31, v32, v38, v39, v40);
 }
 ```
-分析程序，考点中也提到了本题是考察更换字符表的 `Base64` 加密，那我们首先找到更换的字符表
-```go
-v13 = (__int64 *)encoding_base64_NewEncoing((unsignedint"HNO4klm6ij+J2hyf0gzA8uvwDEq3X1Q7ZKeFrWcVTtsMRGYbdxSo=ILaUpPBC",）
-```
-这个语句的作用就是更换加密的字符表，然后再寻找加密后的字符串
-```go
-qmemcpy(v60, "wrY7w=/gEoSF3m7VEr31frPbuxLR3m7VEr3P", sizeof(v60));
-```
-这个语句中的字符串就是加密的后的字符串，本题逻辑是我们输入 `flag` ，然后经过 `Base64` 加密后与上述字符串想比较，相同则输出 `YES` ，所以我们正确的 `flag` 就是将上面的字符串解密，记得更换字符表即可 （`flag{Something_For_Nothing}`）
+
+依稀能够辨析出程序的流程：
+
+1. `qmemcpy` 拷贝内存，放入了 `wrY7w=/gEoSF3m7VEr31frPbuxLR3m7VEr3P`
+1. `fmt_Print` 输出内容
+1. `fmt_scan` 读入内容
+1. `encoding_base64_NewEncoding("HNO4klm6ij+J2hyf0gzA8uvwDEq3X1Q7ZKeFrWcVTtsMRGYbdxSo=ILaUpPBC")`\
+   创建了一个 Base64 编码器，使用的是自定义的字符表 `HNO4klm6ij+J2hyf0gzA8uvwDEq3X1Q7ZKeFrWcVTtsMRGYbdxSo=ILaUpPBC`
+1. `encoding_base64_Encoding_WithPadding(53)`\
+   这个 `53` 其实是`'5'` 的 ASCII 码，这句代码设置了编码器的 Padding（Base64 默认是 `=`）
+1. `encoding_base64__ptr_Encoding_EncodedLen` 获得编码后的长度（大小）
+1. `runtime_makeslice` 根据刚刚获得的大小分配内存
+1. `encoding_base64__ptr_Encoding_Encode` 将用户输入编码，并将编码后的结果放入刚刚分配的内存中
+1. `if (bytes_Equal(...))` 判断编码结果和 `wrY7w=/gEoSF3m7VEr31frPbuxLR3m7VEr3P` 是否一致
+
+对于陌生的函数，可以依照模块名和函数名去查找 Golang 的官方文档。
+
+根据上述分析，我们要做的就是使用自定义字符表的 Base64 解码就能得到 Flag 了，在 CyberChef 可以很方便地做到：
+
+![cyberchef](writeup/cyberchef.png)
+
+这个字符表也没那么“自定义”，叫做 `Hazz15`，CyberChef 中自带。
