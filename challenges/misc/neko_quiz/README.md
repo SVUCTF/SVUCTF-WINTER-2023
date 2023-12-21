@@ -1,7 +1,7 @@
 # 猫娘问答
 
 - 作者：13m0n4de
-- 参考：-
+- 参考：[USTC-Hackergame-2023-猫咪小测](https://github.com/USTC-Hackergame/hackergame2023-writeups/blob/master/official/%E7%8C%AB%E5%92%AA%E5%B0%8F%E6%B5%8B/README.md)
 - 难度：Baby/Trivial/Easy/Normal/Medium/Hard/Expert/Insane
 - 分类：Misc
 - 镜像：[svuctf-winter-2023/neko_quiz](https://ghcr.io/svuctf/svuctf-winter-2023/neko_quiz)
@@ -9,9 +9,17 @@
 
 ## 题目描述
 
-<description>
+圣诞快乐喵~
 
 ## 题目解析
+
+题目形式仿照 [USTC-Hackergame-2023-猫咪小测](https://github.com/USTC-Hackergame/hackergame2023-writeups/blob/master/official/%E7%8C%AB%E5%92%AA%E5%B0%8F%E6%B5%8B/README.md)，可以去翻看一下历届的猫咪小测/猫咪问答，对这类搜索题目有进一步的了解。
+
+题目框架开源在 [13m0n4de/neko-quiz](https://github.com/13m0n4de/neko-quiz) ，欢迎提意见。
+
+下面是题目解析：
+
+______________________________________________________________________
 
 > 1\. 2023 年 11 月，第十四届江苏省大学生机器人大赛在我校成功举办，此次比赛共有多少支代表队参加？**（30 分）**
 >
@@ -115,7 +123,7 @@ ______________________________________________________________________
 
 当然，从一开始就使用以图搜图的功能搜索 IDA Pro 的图标，也是个好办法。
 
-[\*\*Madame de Maintenon looking back by Marie Victoire Jaquotot after Pierre Mignard (Musée du Louvre - Paris France) \*\*](https://www.gogmsite.net/end_of_the_era_-_1684_to_17/subalbum_francoise_daubigne/madame-de-maintenon-looking.html)
+[Madame de Maintenon looking back by Marie Victoire Jaquotot after Pierre Mignard (Musée du Louvre - Paris France)](https://www.gogmsite.net/end_of_the_era_-_1684_to_17/subalbum_francoise_daubigne/madame-de-maintenon-looking.html)
 
 ______________________________________________________________________
 
