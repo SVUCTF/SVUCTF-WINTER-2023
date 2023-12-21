@@ -1,7 +1,7 @@
 # solver
 
 - 作者：pn1fg
-- 参考：SVUCTF-2023
+- 参考：-
 - 难度：Baby/Trivial/Easy/Normal/Medium/Hard/Expert/Insane
 - 分类：Reverse
 - 镜像：-
@@ -9,34 +9,23 @@
 
 ## 题目描述
 
-@pn1fg：「唉，苦恼 Reverse 出什么题目...」
-
-@pn1fg：「我打算用 Rust 写一个，练练手。」
-
-@13m0n4de：「行呗，写。」
-
-@pn1fg：「奋斗中，一天、两天...」
-
-@13m0n4de：「夜深中... `RustDesk` 共享桌面，开始补救...」
-
-@pn1fg：「摸鱼中...」
-
-@13m0n4de：「已经越写越魔幻了，难绷。」
-
-@13m0n4de：「`flag_checker` 里准备放啥？」
-
-@pn1fg：「XOR??? TEA??? Z3??? 看心情吧！」
-
-@13m0n4de：「...」
-
-@13m0n4de：「Pwn???」
-
+@pn1fg：「唉，苦恼 Reverse 出什么题目...」\
+@pn1fg：「我打算用 Rust 写一个，练练手。」\
+@13m0n4de：「行呗，写。」\
+@pn1fg：「奋斗中，一天、两天...」\
+@13m0n4de：「夜深中... `RustDesk` 共享桌面，开始补救...」\
+@pn1fg：「摸鱼中...」\
+@13m0n4de：「已经越写越魔幻了，难绷。」\
+@13m0n4de：「`flag_checker` 里准备放啥？」\
+@pn1fg：「XOR？TEA？Z3？看心情吧！」\
+@13m0n4de：「...」\
+@13m0n4de：「Pwn？」\
 @pn1fg：「走！」
 
 ## 题目解析
 
 - 源码：[main.rs](build/main.rs)
-- 考点：Rust逆向，OXR，z3约束求解
+- 考点：Rust 逆向，XOR，Z3 约束求解
 
 ### 查看文件信息
 
