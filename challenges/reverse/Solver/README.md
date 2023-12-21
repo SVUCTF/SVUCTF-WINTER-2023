@@ -42,11 +42,25 @@ ELF64
 
 64位 ELF 可执行文件
 
-反编译文件
+反编译文件，查看`main`函数
 
-- 查看`main`函数
+这里的 `main` 函数并不是常见的主函数，它使用真正的主函数地址 `dbg.main` 作为参数调用 `dbg.lang_start`
 
-```rust
+```c
+void main(int32_t param_1, ulong param_2)
+
+{
+    ulong auStack_10 [2];
+
+    *(*0x20 + -0x10) = 0xcabe;
+    dbg.lang_start<()>(dbg.main, param_1, param_2, 0);
+    return;
+}
+```
+
+实际的“主函数”地址是 `dbg.main`（IDA 中这些函数名可能不一样，但程序结构肯定是一样的）
+
+```c
 void dbg.main(void)
 {
   uchar auStack128 [48];
@@ -80,7 +94,7 @@ void dbg.main(void)
 
 - 查看 `flag_checker` 函数
 
-```rust
+```c
 void dbg.flag_checker(uint64_t arg1, uint64_t arg2, uint64_t arg3, uint64_t arg4, uint64_t arg5)
 
 {
@@ -211,7 +225,11 @@ void dbg.flag_checker(uint64_t arg1, uint64_t arg2, uint64_t arg3, uint64_t arg4
 
 工具的问题，大家用 IDA 看的时候可能会舒服一点
 
-`flag_checker` 函数中首先将我们输入的五个整形值进行了异或，然后在 `if/else` 条件判断语句中列出了类似于方程组的条件，分析到这本题的大致思路就是先利用 `z3 约束求解器` 解出五个整形值，随后进行异或即可
+`flag_checker` 函数中首先将我们输入的五个整形值进行了异或，然后在 `if/else` 条件判断语句中列出了类似于方程组的条件。
+
+当看见有非常多的变量在做运算和比较，通常可以先考虑 z3 或者 angr 来解题。
+
+那么本题的思路就是先利用 [Z3 约束求解器](https://github.com/Z3Prover/z3) 解出五个整形值，随后进行异或得到输入的数字。
 
 ### 编写利用程序
 
