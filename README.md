@@ -84,11 +84,9 @@ challenges/                             # 所有题目
 | 题目描述与题解 | 难度 | 文件、源代码 | 镜像 | 出题人 |
 |:---|:---|:---|:---|:---|
 | [FlagServer](challenges/web/flagserver/README.md) | - | [文件、源代码](challenges/web/flagserver/build) | [svuctf-winter-2023/flagserver](https://ghcr.io/svuctf/svuctf-winter-2023/flagserver:latest) | 13m0n4de |
-| [题目名](challenges/web/ez_upload/README.md) | - | [文件、源代码](challenges/web/ez_upload/build) | [svuctf-winter-2023/ez_upload](https://ghcr.io/svuctf/svuctf-winter-2023/ez_upload:latest) | Cee-YSKM |
+| [上传？上传！](challenges/web/ez_upload/README.md) | - | [文件、源代码](challenges/web/ez_upload/build) | [svuctf-winter-2023/ez_upload](https://ghcr.io/svuctf/svuctf-winter-2023/ez_upload:latest) | Cee |
 | [热血沸腾的组合技](challenges/web/tonyenc/README.md) | - | [文件、源代码](challenges/web/tonyenc/build) | [svuctf-winter-2023/tonyenc](https://ghcr.io/svuctf/svuctf-winter-2023/tonyenc:latest) | 13m0n4de |
-| [题解分享频道](challenges/web/writeup_channel/README.md) | - | [文件、源代码](challenges/web/writeup_channel/build) | [svuctf-winter-2023/writeup_channel](https://ghcr.io/svuctf/svuctf-winter-2023/writeup_channel:latest) | 13m0n4de |## 难度与分值
-
-## 花絮
+| [题解分享频道](challenges/web/writeup_channel/README.md) | - | [文件、源代码](challenges/web/writeup_channel/build) | [svuctf-winter-2023/writeup_channel](https://ghcr.io/svuctf/svuctf-winter-2023/writeup_channel:latest) | 13m0n4de |## 花絮
 
 ## 来自参赛者的题解
 
