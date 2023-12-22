@@ -4,7 +4,7 @@
 - 参考：-
 - 难度：Baby/Trivial/Easy/Normal/Medium/Hard/Expert/Insane
 - 分类：Pwn
-- 镜像：[svuctf-winter-2023/babyrop](https://ghcr.io/svuctf/svuctf-winter-2023/babyrop)
+- 镜像：[svuctf-winter-2023/candy](https://ghcr.io/svuctf/svuctf-winter-2023/candy)
 - 端口：70
 
 ## 题目描述

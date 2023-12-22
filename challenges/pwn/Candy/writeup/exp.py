@@ -6,12 +6,12 @@ context.log_level = "debug"
 if args['REMOTE']:
     io = remote('IP',port)
 else:
-    io = process("./Candy")
+    io = process("./candy")
 
-elf = ELF("./Candy")
+elf = ELF("./candy")
 
 def exec_fmt(pad):
-    io = process("./Candy")
+    io = process("./candy")
     io.sendline(b"2")
     io.send(pad)
     info = io.recv()
