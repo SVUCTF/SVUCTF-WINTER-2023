@@ -5,7 +5,7 @@ on:
     branches: ["main"]
     paths:
       - "!**/README.md"
-      - "challenges/pwn/Candy/build/**"
+      - "challenges/pwn/candy/build/**"
   workflow_dispatch:
 
 env:
