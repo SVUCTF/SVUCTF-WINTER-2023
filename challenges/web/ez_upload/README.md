@@ -4,8 +4,8 @@
 - 参考：SVUCTF-WINTER-2023
 - 难度：Baby/Trivial/Easy/Normal/Medium/Hard/Expert/Insane
 - 分类：Web
-- 镜像：-
-- 端口：-
+- 镜像：[svuctf-winter-2023/ez_upload](https://ghcr.io/svuctf/svuctf-winter-2023/ez_upload:latest)
+- 端口：80
 
 ## 题目描述
 

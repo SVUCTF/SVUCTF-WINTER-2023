@@ -1,7 +1,7 @@
 # 猫娘问答
 
 - 作者：13m0n4de
-- 参考：SVUCTF-2023
+- 参考：[USTC-Hackergame-2023-猫咪小测](https://github.com/USTC-Hackergame/hackergame2023-writeups/blob/master/official/%E7%8C%AB%E5%92%AA%E5%B0%8F%E6%B5%8B/README.md)
 - 难度：Baby/Trivial/Easy/Normal/Medium/Hard/Expert/Insane
 - 分类：Misc
 - 镜像：[svuctf-winter-2023/neko_quiz](https://ghcr.io/svuctf/svuctf-winter-2023/neko_quiz)
@@ -9,9 +9,17 @@
 
 ## 题目描述
 
-<description>
+圣诞快乐喵~
 
 ## 题目解析
+
+题目形式仿照 [USTC-Hackergame-2023-猫咪小测](https://github.com/USTC-Hackergame/hackergame2023-writeups/blob/master/official/%E7%8C%AB%E5%92%AA%E5%B0%8F%E6%B5%8B/README.md)，可以去翻看一下历届的猫咪小测/猫咪问答，对这类搜索题目有进一步的了解。
+
+题目框架开源在 [13m0n4de/neko-quiz](https://github.com/13m0n4de/neko-quiz) ，欢迎提意见。
+
+下面是题目解析：
+
+______________________________________________________________________
 
 > 1\. 2023 年 11 月，第十四届江苏省大学生机器人大赛在我校成功举办，此次比赛共有多少支代表队参加？**（30 分）**
 >
@@ -25,15 +33,15 @@
 
 代表队数量在文章开头：
 
-![校内文章](writeup/校内文章.png)
+![校内文章](writeup/%E6%A0%A1%E5%86%85%E6%96%87%E7%AB%A0.png)
 
 一些外文引擎暂时还没有收录这些中文内容，不太好搜，建议使用必应。
 
 但并不是离开搜索引擎就彻底没办法了，重大比赛的承办，学校官网一定会发文的，可以使用学校官网自带的站内搜索，也能直接得到结果：
 
-![站内搜索](writeup/站内搜索.png)
+![站内搜索](writeup/%E7%AB%99%E5%86%85%E6%90%9C%E7%B4%A2.png)
 
----
+______________________________________________________________________
 
 > 2\. 截至 2023-12-01 日，SVUCTF 新生赛 GitHub 仓库中的最后一次提交（commit）的哈希值为？**（30 分）**
 >
@@ -49,11 +57,11 @@ Git 和 GitHub 的使用是必要的前置知识，如果你对它们还一无�
 
 在 SVUCTF 新生赛仓库 [SVUCTF/SVUCTF-HELLOWORLD-2023](https://github.com/SVUCTF/SVUCTF-HELLOWORLD-2023) 页面，点击提交历史按钮：
 
-![提交按钮](writeup/提交按钮.png)
+![提交按钮](writeup/%E6%8F%90%E4%BA%A4%E6%8C%89%E9%92%AE.png)
 
 可以看到提交的时间线：
 
-![提交时间线](writeup/提交时间线.png)
+![提交时间线](writeup/%E6%8F%90%E4%BA%A4%E6%97%B6%E9%97%B4%E7%BA%BF.png)
 
 而 2023-12-01 日之前的最后一次提交是 SVUCTF 用户的 [Update LICENSE](https://github.com/SVUCTF/SVUCTF-HELLOWORLD-2023/commit/c9376fd461e00f3e1899a4435839691b7aed3de8)，右侧 `c9376fd` 是 *commit hash* 的前七位，点击旁边的复制按钮就可以复制完整的 *commit hash* 了。
 
@@ -79,7 +87,7 @@ GPL 许可证的其中一个特性是：如果某个项目使用了以 GPL 许�
 
 不同的开源许可证有不同的约束，希望同学们都能遵守开源协议。
 
----
+______________________________________________________________________
 
 > 3\. IDA Pro 的图标是哪位女子？**（20 分）**
 >
@@ -101,7 +109,7 @@ GPL 许可证的其中一个特性是：如果某个项目使用了以 GPL 许�
 
 > FWIW, the IDA logo came from a mid-90s image CD called “10000  royalty free images”, probably some so-so scan of the old picture now  shown on the wikipedia (this is the first time I see it on the web btw). I would have wanted a royalty free picture of Ada Lovelace for whom I  couldn’t find a royalty free image at the time…
 
-> 当时（1999年）在网上找不到Ada的免费照片，于是就用了一张法皇路易14的第二个妻子Marquise de Maintenon的免费照片作为IDA Pro的logo，并沿用至今。 
+> 当时（1999年）在网上找不到Ada的免费照片，于是就用了一张法皇路易14的第二个妻子Marquise de Maintenon的免费照片作为IDA Pro的logo，并沿用至今。
 
 虽然作者截图中的提问已经找不到了，但其中回答的人 [Igor Skochinsky](https://stackexchange.com/users/185833/igor-skochinsky) 还能找到，他在 Hex-Rays 工作，可信度还是挺高的。
 
@@ -115,9 +123,9 @@ GPL 许可证的其中一个特性是：如果某个项目使用了以 GPL 许�
 
 当然，从一开始就使用以图搜图的功能搜索 IDA Pro 的图标，也是个好办法。
 
-[**Madame de Maintenon looking back by Marie Victoire Jaquotot after Pierre Mignard (Musée du Louvre - Paris France) **](https://www.gogmsite.net/end_of_the_era_-_1684_to_17/subalbum_francoise_daubigne/madame-de-maintenon-looking.html)
+[Madame de Maintenon looking back by Marie Victoire Jaquotot after Pierre Mignard (Musée du Louvre - Paris France)](https://www.gogmsite.net/end_of_the_era_-_1684_to_17/subalbum_francoise_daubigne/madame-de-maintenon-looking.html)
 
----
+______________________________________________________________________
 
 > 4\. 为了将全世界无数物理层网络上的比特流拟人化，RFC 提出了一个 TCP 选项来表达数据包情绪，当向连接的系统发送 RST 数据包时，应该在此选项处填入什么内容？**（20 分）**
 >
@@ -136,6 +144,7 @@ RFC 文档包含了计算机网络的方方面面，绝大部分网络标准的�
 例如：
 
 - RFC 1149： 鸽载互联网协议。以鸽子作为载体传输数据，传输可靠性差，鸟类容易受到天气和环境等因素的影响，如遇极端天气，丢包率可高达100%...
+
 - RFC 1606：从历史的角度看 IPv9 的使用。文档中称过去几年里 IPv9 的普及率惊人，但由于太阳系上智能生命以及超光速传输堆栈的并行发现使可用空间急剧减少，把 IPv9 可寻址组件注射到血流中还不确定...
 
 - RFC 2324：超文本咖啡壶控制协议（HTCPCP）。制定了一系列控制联网咖啡壶的协议，甚至真的衍生出了 418 这个 HTTP 状态码...
@@ -146,9 +155,9 @@ RFC 文档包含了计算机网络的方方面面，绝大部分网络标准的�
 
 全文搜索 `RST` 找到 4.10 章节：
 
-> ##### 4.10. Apathetic Packets                
+> ##### 4.10. Apathetic Packets
 >
-> When sending a RST packet to a connected system, the packet should be  marked as apathetic so that the receiver knows that your system does not care what happens after that. 
+> When sending a RST packet to a connected system, the packet should be  marked as apathetic so that the receiver knows that your system does not care what happens after that.
 
 当向连接的系统发送 RST 数据包时，应该将此数据包标记为”冷漠“（`apathetic`）。
 

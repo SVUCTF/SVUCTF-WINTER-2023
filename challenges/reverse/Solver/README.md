@@ -1,40 +1,36 @@
 # solver
+
 - 作者：pn1fg
-- 参考：SVUCTF-2023
+- 参考：-
 - 难度：Baby/Trivial/Easy/Normal/Medium/Hard/Expert/Insane
 - 分类：Reverse
 - 镜像：-
 - 端口：-
+
 ## 题目描述
-@pn1fg：「唉，苦恼 Reverse 出什么题目...」
 
-@pn1fg：「我打算用 Rust 写一个，练练手。」
-
-@13m0n4de：「行呗，写。」
-
-@pn1fg：「奋斗中，一天、两天...」
-
-@13m0n4de：「夜深中... `RustDesk` 共享桌面，开始补救...」
-
-@pn1fg：「摸鱼中...」
-
-@13m0n4de：「已经越写越魔幻了，难绷。」
-
-@13m0n4de：「`flag_checker` 里准备放啥？」
-
-@pn1fg：「XOR??? TEA??? Z3??? 看心情吧！」
-
-@13m0n4de：「...」
-
-@13m0n4de：「Pwn???」
-
+@pn1fg：「唉，苦恼 Reverse 出什么题目...」\
+@pn1fg：「我打算用 Rust 写一个，练练手。」\
+@13m0n4de：「行呗，写。」\
+@pn1fg：「奋斗中，一天、两天...」\
+@13m0n4de：「夜深中... `RustDesk` 共享桌面，开始补救...」\
+@pn1fg：「摸鱼中...」\
+@13m0n4de：「已经越写越魔幻了，难绷。」\
+@13m0n4de：「`flag_checker` 里准备放啥？」\
+@pn1fg：「XOR？TEA？Z3？看心情吧！」\
+@13m0n4de：「...」\
+@13m0n4de：「Pwn？」\
 @pn1fg：「走！」
+
 ## 题目解析
 
 - 源码：[main.rs](build/main.rs)
-- 考点：Rust逆向，OXR，z3约束求解
+- 考点：Rust 逆向，XOR，Z3 约束求解
+
 ### 查看文件信息
+
 查壳：
+
 ```
 $ diec solver
 ELF64
@@ -43,12 +39,28 @@ ELF64
     Compiler: Rust(-)[DYN AMD64-64]
     Compiler: gcc(3.X)[DYN AMD64-64]
 ```
+
 64位 ELF 可执行文件
 
-反编译文件
+反编译文件，查看`main`函数
 
-- 查看`main`函数
-```rust
+这里的 `main` 函数并不是常见的主函数，它使用真正的主函数地址 `dbg.main` 作为参数调用 `dbg.lang_start`
+
+```c
+void main(int32_t param_1, ulong param_2)
+
+{
+    ulong auStack_10 [2];
+
+    *(*0x20 + -0x10) = 0xcabe;
+    dbg.lang_start<()>(dbg.main, param_1, param_2, 0);
+    return;
+}
+```
+
+实际的“主函数”地址是 `dbg.main`（IDA 中这些函数名可能不一样，但程序结构肯定是一样的）
+
+```c
 void dbg.main(void)
 {
   uchar auStack128 [48];
@@ -77,10 +89,12 @@ void dbg.main(void)
   return;
 } 
 ```
+
 `main` 函数中接收了五个整形值，然后调用了 `flag_checker` 函数
 
 - 查看 `flag_checker` 函数
-```rust
+
+```c
 void dbg.flag_checker(uint64_t arg1, uint64_t arg2, uint64_t arg3, uint64_t arg4, uint64_t arg5)
 
 {
@@ -208,12 +222,17 @@ void dbg.flag_checker(uint64_t arg1, uint64_t arg2, uint64_t arg3, uint64_t arg4
     return;
 }
 ```
+
 工具的问题，大家用 IDA 看的时候可能会舒服一点
 
-`flag_checker` 函数中首先将我们输入的五个整形值进行了异或，然后在 `if/else` 条件判断语句中列出了类似于方程组的条件，分析到这本题的大致思路就是先利用 `z3
-约束求解器` 解出五个整形值，随后进行异或即可
+`flag_checker` 函数中首先将我们输入的五个整形值进行了异或，然后在 `if/else` 条件判断语句中列出了类似于方程组的条件。
+
+当看见有非常多的变量在做运算和比较，通常可以先考虑 z3 或者 angr 来解题。
+
+那么本题的思路就是先利用 [Z3 约束求解器](https://github.com/Z3Prover/z3) 解出五个整形值，随后进行异或得到输入的数字。
 
 ### 编写利用程序
+
 ```python
 from z3 import *
 
@@ -246,4 +265,5 @@ e = result[e].as_long() ^ 0xbde
 print("\nThese Five numbers:")
 print("a =",a,"\nb =",b,"\nc =",c,"\nd =",d,"\ne =",e)
 ```
+
 **注意类型的转换**

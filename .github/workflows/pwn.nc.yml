@@ -1,0 +1,46 @@
+name: Challenge nc
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "!**/README.md"
+      - "challenges/pwn/nc/build/**"
+  workflow_dispatch:
+
+env:
+  TYPE: pwn
+  NAME: nc
+  REGISTRY: ghcr.io
+
+jobs:
+  challenge-build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: ${{ env.REGISTRY }}/${{ github.repository }}/${{ env.NAME }}
+          tags: |
+            latest
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4
+        with:
+          context: challenges/${{ env.TYPE }}/${{ env.NAME }}/build
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          push: true
