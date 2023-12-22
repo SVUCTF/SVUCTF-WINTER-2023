@@ -3,12 +3,13 @@ from pwn import *
 context.arch = "amd64"
 context.log_level = "debug"
 
-if args['REMOTE']:
-    io = remote('IP',port)
+if args["REMOTE"]:
+    io = remote("127.0.0.1", 70)
 else:
     io = process("./candy")
 
 elf = ELF("./candy")
+
 
 def exec_fmt(pad):
     io = process("./candy")
