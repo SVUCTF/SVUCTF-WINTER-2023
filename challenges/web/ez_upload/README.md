@@ -1,7 +1,7 @@
-# 题目名
+# 上传？上传！
 
-- 作者：Cee-YSKM
-- 参考：-
+- 作者：Cee
+- 参考：SVUCTF-WINTER-2023
 - 难度：Baby/Trivial/Easy/Normal/Medium/Hard/Expert/Insane
 - 分类：Web
 - 镜像：[svuctf-winter-2023/ez_upload](https://ghcr.io/svuctf/svuctf-winter-2023/ez_upload:latest)
@@ -9,9 +9,11 @@
 
 ## 题目描述
 
-文件上传的条件竞争 Enjoy your Happy New Year Day! Best wishes!!!
+老表说这一题很ez
 
 ## 题目解析
+
+文件上传的条件竞争 Enjoy your Happy New Year Day! Best wishes!!!
 
 题目可以使用两种解决办法 一种是python脚本 一种是使用burp
 
