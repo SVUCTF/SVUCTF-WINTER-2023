@@ -20,33 +20,39 @@
 
 在进入 printf 之后，函数首先获取第一个参数，一个一个读取其字符会遇到两种情况
 
-- 当前字符不是 %，直接输出到相应标准输出。 
-- 当前字符是 %， 继续读取下一个字符 
-- 如果没有字符，报错 
-- 如果下一个字符是 %, 输出 % 
-- 否则根据相应的字符，获取相应的参数，对其进行解析并输出 
+- 当前字符不是 %，直接输出到相应标准输出。
+- 当前字符是 %， 继续读取下一个字符
+- 如果没有字符，报错
+- 如果下一个字符是 %, 输出 %
+- 否则根据相应的字符，获取相应的参数，对其进行解析并输出
 
 那么假设，此时我们在编写程序时候，写成了下面的样子
 
-```c++
+```c
 printf("Color %s, Number %d, Float %4.2f");
 ```
+
 此时我们可以发现我们并没有提供参数，那么程序会如何运行呢？程序照样会运行，会将栈上存储格式化字符串地址上面的三个变量分别解析为
-- 1.解析其地址对应的字符串 
-- 2.解析其内容对应的整形值 
+
+- 1.解析其地址对应的字符串
+- 2.解析其内容对应的整形值
 - 3.解析其内容对应的浮点值
 
 这基本就是格式化字符串漏洞的基本原理了。
 
 ### 查看文件信息
+
 查看文件类型（`file` 命令）：
+
 ```shell
 $ file pwn
 pwn: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=0059aa9c4a34393d23601ab109b1b940e1a6424e, for GNU/Linux 4.4.0, not stripped
 ```
+
 这是一个64位 ELF 文件（`ELF 64-bit LSB executable`），动态链接（`dynamically linked`），没有去除符号（`not stripped`）
 
 检查文件保护机制（`checksec`命令）：
+
 ```shell
 $ checksec pwn
     Arch:     amd64-64-little
@@ -55,10 +61,12 @@ $ checksec pwn
     NX:       NX enabled
     PIE:      No PIE (0x400000)
 ```
+
 ### 分析漏洞成因
 
 反编译 `main` 函数：
-```c++
+
+```c
 ulong main(void)
 
 {
@@ -68,8 +76,10 @@ ulong main(void)
     return 0;
 }
 ```
+
 反编译 `init` 函数：
-```c++
+
+```c
 void sym.init(void)
 
 {
@@ -80,14 +90,18 @@ void sym.init(void)
     return;
 }
 ```
+
 `mprotect` 函数原型
-```c++  
+
+```c
 int mprotect(const void *start, size_t len, int prot);
 ```
+
 `mprotect()` 函数把自 start 开始的、长度为 len 的内存区的保护属性修改为 prot 指定的值。这里的 prot 为7，所以这一块内存区则**可读可写可执行**
 
 反编译 `vuln` 函数：
-```c++
+
+```c
 void sym.vuln(void)
 
 {
@@ -118,23 +132,27 @@ void sym.vuln(void)
     return;
 }
 ```
+
 分析一下 `vuln` 函数的逻辑，最外层 `while` 循环，然后输入一个整形值，接下来 `if` 条件判断，当输入的值为 `1` 时，调用 `read` 函数向 `obj.name` 中读入 0x100 字符串，`obj.name` 位于`bss`段上，有可执行权限，当输入的值为 `2` 时，执行的分支语句为：
 
-```c++
+```c
 sym.imp.puts("There\'s a candy voucher in the flag!");
 sym.imp.memset(&format, 0, 0x100);
 sym.imp.read(0, &format, 0x100);
 sym.imp.printf(&format);
 ```
+
 这里有很明显的格式化字符串漏洞，可以修改任意地址
 
 这题我们的利用思路如下：
 
-- 在 `obj.name` 处填入 shellcode 
+- 在 `obj.name` 处填入 shellcode
 - 利用格式化字符串漏洞劫持 GOT 表，修改 `printf` 处地址为 `obj.name` 地址即可执行 shellcode，获取 shell
 
 ### 编写利用程序
+
 [exp.py](writeup/exp.py)
+
 ```python
 from pwn import *
 
