@@ -2,7 +2,7 @@ FROM ubuntu:22.04 AS builder
 
 COPY main.c /main.c
 RUN apt-get update && apt install gcc -y && \
-    gcc -o candy main.c -no-pie -fno-protector
+    gcc -o candy main.c -no-pie -fno-stack-protector
 
 FROM ghcr.io/svuctf/base/xinetd:alpine
 
