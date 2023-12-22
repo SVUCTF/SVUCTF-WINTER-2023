@@ -1,4 +1,4 @@
-name: Challenge Candy
+name: Challenge candy
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
 
 env:
   TYPE: pwn
-  NAME: Candy
+  NAME: candy
   REGISTRY: ghcr.io
 
 jobs:

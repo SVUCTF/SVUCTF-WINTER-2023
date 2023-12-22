@@ -4,4 +4,4 @@ echo $GZCTF_FLAG > /home/ctf/flag
 chown -R ctf:ctf /home/ctf/flag
 unset GZCTF_FLAG
 
-/usr/sbin/chroot /home/ctf/ /Candy
+/usr/sbin/chroot /home/ctf/ /candy

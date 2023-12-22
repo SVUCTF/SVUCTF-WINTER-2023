@@ -2,7 +2,7 @@ FROM ubuntu:22.04 AS builder
 
 COPY main.c /main.c
 RUN apt-get update && apt install gcc -y && \
-    gcc -o Candy main.c -no-pie -fno-protector
+    gcc -o candy main.c -no-pie -fno-protector
 
 FROM ghcr.io/svuctf/base/xinetd:alpine
 
@@ -30,6 +30,6 @@ RUN chmod +x /init.sh && \
 
 COPY --from=builder /lib/x86_64-linux-gnu/libc.so.6 /home/ctf/lib/x86_64-linux-gnu/
 COPY --from=builder /lib/x86_64-linux-gnu/ld-linux-x86-64.so.2 /home/ctf/lib64/
-COPY --from=builder --chown=ctf:ctf --chmod=500 /Candy /home/ctf/Candy
+COPY --from=builder --chown=ctf:ctf --chmod=500 /candy /home/ctf/candy
 
 CMD ["xinetd", "-dontfork"]
