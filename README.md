@@ -16,7 +16,7 @@ Powered by GZCTF and GZTime
   - [Misc](#Misc)
   - [Reverse](#Reverse)
   - [Pwn](#Pwn)
-  - [Crypto](#Crytpo)
+  - [Crypto](#Crypto)
   - [Web](#Web)
 - [难度与分值](#%E9%9A%BE%E5%BA%A6%E4%B8%8E%E5%88%86%E5%80%BC)
 - [花絮](#%E8%8A%B1%E7%B5%AE)
