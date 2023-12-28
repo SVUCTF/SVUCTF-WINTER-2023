@@ -111,6 +111,18 @@ challenges/                             # 所有题目
 
 ## 来自参赛者的题解
 
+选手需要使用 Pull request 提交自己的题解文件，并在下面表格中添加自己的一栏信息。
+
+注意：选手提交的 write-up 的主要内容需要在本仓库存档，仅仅提供到自己博客的题解链接的 Pull requests 不会被合并。
+
+选手提交的 write-up 中可以添加自己的博客链接，以及指定 License（如不指定，则默认与本仓库相同，见 [许可证](#%E8%AE%B8%E5%8F%AF%E8%AF%81) 一节）。
+
+题解格式可以参考下方示例。
+
+| write-up                                     | 包含题目   |
+|:---------------------------------------------|:-------|
+| [示例](./player-write-ups/example/README.md) | 只是个示例 |
+
 ## 往届比赛
 
 - [SVUCTF/SVUCTF-HELLOWORLD-2023](https://github.com/SVUCTF/SVUCTF-HELLOWORLD-2023) 破晓工作室 2023 招新赛
@@ -118,3 +130,7 @@ challenges/                             # 所有题目
 ## 致谢
 
 - [GZCTF](https://github.com/GZTimeWalker/GZCTF/)：比赛平台
+
+## 许可证
+
+该项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解更多细节。
