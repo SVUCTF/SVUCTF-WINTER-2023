@@ -51,6 +51,8 @@ golang: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), statically linked, 
 
 或者可以使用 IDA 8.x ，对 Golang 进行了更好的支持，不需要做额外的操作就能很舒适地反编译。
 
+![choose_your_payment_method](./writeup/choose_your_payment_method.png)
+
 `main_main` 函数
 
 ```go
@@ -165,7 +167,7 @@ v39,v40,v41,v42,v43,v44,v45,v46,v47,v48,v49,v50,v51,v52,v53,v54[0],v54[1],v54[2]
 1. `qmemcpy` 拷贝内存，放入了 `wrY7w=/gEoSF3m7VEr31frPbuxLR3m7VEr3P`
 1. `fmt_Print` 输出内容
 1. `fmt_scan` 读入内容
-1. `encoding_base64_NewEncoding("HNO4klm6ij+J2hyf0gzA8uvwDEq3X1Q7ZKeFrWcVTtsMRGYbdxSo=ILaUpPBC")`\
+1. `encoding_base64_NewEncoding("HNO4klm6ij+J2hyf0gzA8uvwDEq3X1Q7ZKeFrWcVTtsMRGYbdxSo=ILaUpPBC")`
    创建了一个 Base64 编码器，使用的是自定义的字符表 `HNO4klm6ij+J2hyf0gzA8uvwDEq3X1Q7ZKeFrWcVTtsMRGYbdxSo=ILaUpPBC`
 1. `encoding_base64_Encoding_WithPadding(53)`\
    这个 `53` 其实是`'5'` 的 ASCII 码，这句代码设置了编码器的 Padding（Base64 默认是 `=`）
