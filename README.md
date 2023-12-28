@@ -10,6 +10,16 @@ Powered by GZCTF and GZTime
 
 </div>
 
+## 说明
+
+本仓库用于存储和构建 SVUCTF-WINTER-2023 的题目镜像、题解。
+
+欢迎各位选手以 Pull Request 的形式提交自己的 write-up 。
+
+若大家对本题解有任何疑问或改进建议，欢迎 提 issue。
+
+比赛时间：北京时间 2023 年 12 月 24 日 18:00 ～ xx 月 xx 日 12:00（共 xx 天）
+
 ## 目录
 
 - [题目](#%E9%A2%98%E7%9B%AE)
