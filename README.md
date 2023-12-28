@@ -38,19 +38,25 @@ Powered by GZCTF and GZTime
 项目结构遵循 GZCTF 规范。
 
 ```
-.github/workflows/                      # Github Actions
-    └── <category>.<name>.yml               # 每个题目的编译脚本
-challenges/                             # 所有题目
-    ├── web/                                # 题目分类
-    │   ├── challenge1/                         # 题目
-    │   │   ├── build/                              # 构建文件
+.github/workflows/                  # Github Actions
+    └── <category>.<name>.yml           # 每个题目的编译脚本
+assets/                             # 资源文件，比如封面图
+behind-the-scenes/                  # 花絮
+challenges/                         # 所有题目
+    ├── web/                            # 题目分类
+    │   ├── challenge1/                     # 题目
+    │   │   ├── build/                          # 构建文件
     │   │   │   ├── Dockerfile
     │   │   │   └── more...
-    │   │   ├── attachments/                        # 附件
-    │   │   ├── writeup/                            # 题解文件    
-    │   │   └── README.md                           # 题目信息（含题解文本）
+    │   │   ├── attachments/                    # 附件
+    │   │   ├── writeup/                        # 题解文件    
+    │   │   └── README.md                       # 题目信息（含题解文本）
     │   └── more...
     └── more...
+player-write-ups/                   # 来自选手的 write-up
+├── 13m0n4de/                           # 选手题解
+│   └── README.md
+└── more...
 ```
 
 ## 题目
@@ -121,9 +127,9 @@ challenges/                             # 所有题目
 
 题解格式可以参考下方示例。
 
-| write-up                                     | 包含题目   |
-|:---------------------------------------------|:-------|
-| [示例](./player-write-ups/example/README.md) | 只是个示例 |
+| write-up                                     | 包含题目              |
+|:---------------------------------------------|:------------------|
+| [示例](./player-write-ups/example/README.md) | 题目一、题目二、题目... |
 
 ## 往届比赛
 
