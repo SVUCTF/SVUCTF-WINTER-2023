@@ -2,7 +2,7 @@
 
 - 作者：13m0n4de
 - 参考：[USTC-Hackergame-2023-猫咪小测](https://github.com/USTC-Hackergame/hackergame2023-writeups/blob/master/official/%E7%8C%AB%E5%92%AA%E5%B0%8F%E6%B5%8B/README.md)
-- 难度：Baby/Trivial/Easy/Normal/Medium/Hard/Expert/Insane
+- 难度：Normal
 - 分类：Misc
 - 镜像：[svuctf-winter-2023/neko_quiz](https://ghcr.io/svuctf/svuctf-winter-2023/neko_quiz)
 - 端口：3000

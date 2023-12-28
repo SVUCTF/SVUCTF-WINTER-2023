@@ -2,7 +2,7 @@
 
 - 作者：13m0n4de
 - 参考：[Hackergame-2023-超精准的宇宙射线模拟器](https://github.com/USTC-Hackergame/hackergame2020-writeups/tree/master/official/%E8%B6%85%E7%B2%BE%E5%87%86%E7%9A%84%E5%AE%87%E5%AE%99%E5%B0%84%E7%BA%BF%E6%A8%A1%E6%8B%9F%E5%99%A8) / [Hack.lu-2023-bit](https://ctftime.org/writeup/7894)
-- 难度：Baby/Trivial/Easy/Normal/Medium/Hard/Expert/Insane
+- 难度：Medium
 - 分类：Pwn
 - 镜像：[svuctf-winter-2023/flipper](https://ghcr.io/svuctf/svuctf-winter-2023/flipper:latest)
 - 端口：70

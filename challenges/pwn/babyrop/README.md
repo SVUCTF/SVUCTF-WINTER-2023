@@ -2,7 +2,7 @@
 
 - 作者：pn1fg
 - 参考：-
-- 难度：Baby/Trivial/Easy/Normal/Medium/Hard/Expert/Insane
+- 难度：Normal
 - 分类：Pwn
 - 镜像：[svuctf-winter-2023/babyrop](https://ghcr.io/svuctf/svuctf-winter-2023/babyrop)
 - 端口：70

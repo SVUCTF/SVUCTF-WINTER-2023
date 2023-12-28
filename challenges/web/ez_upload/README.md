@@ -2,7 +2,7 @@
 
 - 作者：Cee
 - 参考：SVUCTF-WINTER-2023
-- 难度：Baby/Trivial/Easy/Normal/Medium/Hard/Expert/Insane
+- 难度：Easy
 - 分类：Web
 - 镜像：[svuctf-winter-2023/ez_upload](https://ghcr.io/svuctf/svuctf-winter-2023/ez_upload:latest)
 - 端口：80

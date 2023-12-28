@@ -2,7 +2,7 @@
 
 - 作者：13m0n4de
 - 参考：-
-- 难度：Baby/Trivial/Easy/Normal/Medium/Hard/Expert/Insane
+- 难度：Medium
 - 分类：Misc
 - 镜像：-
 - 端口：-

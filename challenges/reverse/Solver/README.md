@@ -2,7 +2,7 @@
 
 - 作者：pn1fg
 - 参考：-
-- 难度：Baby/Trivial/Easy/Normal/Medium/Hard/Expert/Insane
+- 难度：Medium
 - 分类：Reverse
 - 镜像：-
 - 端口：-
