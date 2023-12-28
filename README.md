@@ -16,7 +16,9 @@ Powered by GZCTF and GZTime
 
 欢迎各位选手以 Pull Request 的形式提交自己的 write-up 。
 
-若大家对本题解有任何疑问或改进建议，欢迎 提 issue。
+若大家对本题解有任何疑问或改进建议，欢迎提 issue。
+
+所有花絮可在 [behind-the-scenes](./behind-the-scenes/README.md) 中找到。
 
 比赛时间：北京时间 2023 年 12 月 24 日 18:00 ～ xx 月 xx 日 12:00（共 xx 天）
 
