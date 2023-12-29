@@ -94,7 +94,7 @@ player-write-ups/                   # 来自选手的 write-up
 |:-----------------------------------------------------|:-------|:---------------------------------------------------|:-----|:-------|
 | [签到](challenges/crypto/qiandao/README.md)          | Easy   | [文件、源代码](challenges/crypto/qiandao/attachments)    | -    | Cee    |
 | [Simple-RSA](challenges/crypto/simple_rsa/README.md) | Normal | [文件、源代码](challenges/crypto/simple_rsa/attachments) | -    | Cee    |
-| [题目名](challenges/crypto/Ez_DSA/README.md)         | Normal | [文件、源代码](challenges/crypto/Ez_DSA/attachments)     | -    | Cee    |
+| [Ez_DSA](challenges/crypto/Ez_DSA/README.md)         | Normal | [文件、源代码](challenges/crypto/Ez_DSA/attachments)     | -    | Cee    |
 | [变异凯撒](challenges/crypto/BY_Caesar/README.md)    | Normal | [文件、源代码](challenges/crypto/BY_Caesar/attachments)  | -    | Cee    |
 
 ### Web
