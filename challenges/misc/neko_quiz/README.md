@@ -159,7 +159,7 @@ RFC 文档包含了计算机网络的方方面面，绝大部分网络标准的�
 >
 > When sending a RST packet to a connected system, the packet should be  marked as apathetic so that the receiver knows that your system does not care what happens after that.
 
-当向连接的系统发送 RST 数据包时，应该将此数据包标记为”冷漠“（`apathetic`）。
+当向连接的系统发送 RST 数据包时，应该将此数据包标记为“冷漠”（`apathetic`）。
 
 在第 3 节简单情绪表征中，列出了传达情绪时建议使用的 ASCII 表情：
 
