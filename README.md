@@ -20,7 +20,7 @@ Powered by GZCTF and GZTime
 
 所有花絮可在 [behind-the-scenes](./behind-the-scenes/README.md) 中找到。
 
-比赛时间：北京时间 2023 年 12 月 24 日 18:00 ～ xx 月 xx 日 12:00（共 xx 天）
+比赛时间：北京时间 2023 年 12 月 24 日 18:00 ～ 12 月 30 日 18:00（共 7 天）
 
 ## 目录
 
