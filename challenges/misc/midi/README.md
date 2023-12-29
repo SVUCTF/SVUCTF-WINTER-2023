@@ -15,7 +15,7 @@
 
 灵感来源于 [Advent-Calendar-CTF-2019-Musical-Stegano](https://ctftime.org/task/10148)，它的题解：[therhd/overthewire_advent_2019](https://github.com/therhd/overthewire_advent_2019)，基本上就是做了个极简版。
 
-附件给的是一个 MIDI 文件，播放后可以听到 Jingle Bell 其中夹杂了一些不和谐的音。
+附件给的是一个 MIDI 文件，播放后可以听到 Jingle Bells 其中夹杂了一些不和谐的音。
 
 ~~你可以使用绝对音感把它们全部记下来~~
 
@@ -25,7 +25,7 @@
 
 ![signal_truck](./writeup/signal_truck.png)
 
-会发现除了正常的 Jingle Bell ，还有一个没名字的音轨，但点进去什么音符都没有。
+会发现除了正常的 Jingle Bells ，还有一个没名字的音轨，但点进去什么音符都没有。
 
 这和 MIDI 文件的制作过程有关系：[gen.py](./build/gen.py)，软件不认为那些是完好的音。
 
@@ -77,15 +77,13 @@ MidiTrack([
 | 102 | 108 | 97  | 103 | 123 |
 | 204 | 213 | 166 | 205 | 234 |
 
-````
-
 我们拿第一个 Message 举例
 
 ```python
   Message('note_on', channel=0, note=71, velocity=64, time=256),
   Message('note_on', channel=0, note=67, velocity=64, time=256),
   Message('note_on', channel=0, note=74, velocity=64, time=256),
-````
+```
 
 `note` 值为 `71 67 74`，分别是 `67 69 71 72 74 76 78` 中的第 `2` 个、第 `0` 个、第 `4` 个。
 
