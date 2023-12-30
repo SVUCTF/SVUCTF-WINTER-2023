@@ -66,7 +66,7 @@
 
 ![假传圣旨x3](./images/%E5%81%87%E4%BC%A0%E5%9C%A3%E6%97%A8x3.png)
 
-## 偷题未遂
+### 偷题未遂
 
 [#41](https://github.com/SVUCTF/SVUCTF-WINTER-2023/issues/41#issuecomment-1865410342)
 
