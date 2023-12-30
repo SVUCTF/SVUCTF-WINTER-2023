@@ -6,9 +6,13 @@
 
 ## flag
 
-### 《抢跑》
+### 本以为是抢跑，结果是非预期
 
-![抢跑](./images/%E6%8A%A2%E8%B7%91.png)
+~~![抢跑](./images/%E6%8A%A2%E8%B7%91.png)~~
+
+起初以为是在 [NekoQuiz](https://github.com/13m0n4de/neko-quiz) 那的预览图提前看见了题目，结果是后端写的有问题，被非预期了。
+
+见：[猫娘问答#非预期](../challenges/misc/neko_quiz/README.md#%E9%9D%9E%E9%A2%84%E6%9C%9F)
 
 ### 疑似人工智能入侵
 
