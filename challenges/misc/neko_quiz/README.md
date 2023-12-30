@@ -220,3 +220,35 @@ RFC 文档包含了计算机网络的方方面面，绝大部分网络标准的�
 都是可以直接得到 Flag 的。
 
 选手 write-up 中说的“抓包了一下，再点击提交，做着做着就出来了”，应该就是这样吧。
+
+现在已经修复，https://github.com/13m0n4de/neko-quiz/commit/0dba01323911d87cb6a8b5d2f66a373a7fbe98f5 ，改成了：
+
+```rust
+    let user_answers: HashMap<usize, String> = HashMap::from_iter(
+        request_answers
+            .iter()
+            .cloned()
+            .map(|AnswerRequest { id, answer }| (id, answer)),
+    );
+
+    let mut status = true;
+    let mut score = 0;
+
+    for (id, (correct_answer, points)) in correct_answers {
+        match user_answers.get(id) {
+            Some(answer) if correct_answer.contains(answer) => score += points,
+            _ => status = false,
+        }
+    }
+```
+
+仓库附件、镜像，包括平台的镜像也更新了，想要复现非预期的同学，可以拉取 NekoQuiz 的仓库，用老版本的代码构建 Docker 镜像。
+
+具体操作如下：
+
+```
+$ git clone https://github.com/13m0n4de/neko-quiz
+$ cd neko-quiz
+$ git reset --hard 46ff2ee5319ea91cf1a6560af83698602d32635
+$ docker-compose up
+```
