@@ -16,7 +16,7 @@ Powered by GZCTF and GZTime
 
 欢迎各位选手以 Pull Request 的形式提交自己的 write-up 。
 
-若大家对本题解有任何疑问或改进建议，欢迎提 issue。
+若大家对本题解有任何疑问或改进建议，欢迎提 issue 。
 
 所有花絮可在 [behind-the-scenes](./behind-the-scenes/README.md) 中找到。
 
@@ -54,64 +54,64 @@ challenges/                         # 所有题目
     │   └── more...
     └── more...
 player-write-ups/                   # 来自选手的 write-up
-├── 13m0n4de/                           # 选手题解
-│   └── README.md
-└── more...
+    ├── 13m0n4de/                           # 选手题解
+    │   └── README.md
+    └── more...
 ```
 
 ## 题目
 
 ### Misc
 
-| 题目描述与题解                                           | 难度   | 文件、源代码                                           | 镜像                                                                                | 出题人   |
-|:---------------------------------------------------------|:-------|:-------------------------------------------------|:------------------------------------------------------------------------------------|:---------|
-| [esrever](challenges/misc/esrever/README.md)             | Easy   | [文件、源代码](challenges/misc/esrever/attachments)    | -                                                                                   | 13m0n4de |
-| [猫娘问答](challenges/misc/neko_quiz/README.md)          | Normal | [文件、源代码](challenges/misc/neko_quiz/build)        | [svuctf-winter-2023/neko_quiz](https://ghcr.io/svuctf/svuctf-winter-2023/neko_quiz) | 13m0n4de |
-| [蟹皇堡秘方](challenges/misc/cyberchef_recipe/README.md) | Normal | [文件、源代码](challenges/misc/cyberchef_recipe/build) | -                                                                                   | 13m0n4de |
-| [ksks 的小夜曲](challenges/misc/midi/README.md)          | Medium | [文件、源代码](challenges/misc/midi/build)             | -                                                                                   | 13m0n4de |
+| 题目描述与题解                                           | 难度   | 附件                                                 | 源代码                                           | 镜像                                                                                | 出题人   |
+|:---------------------------------------------------------|:-------|:-----------------------------------------------------|:-------------------------------------------------|:------------------------------------------------------------------------------------|:---------|
+| [esrever](challenges/misc/esrever/README.md)             | Easy   | [附件](challenges/misc/esrever/attachments)          | -                                                | -                                                                                   | 13m0n4de |
+| [猫娘问答](challenges/misc/neko_quiz/README.md)          | Normal | -                                                    | [源代码](challenges/misc/neko_quiz/build)        | [svuctf-winter-2023/neko_quiz](https://ghcr.io/svuctf/svuctf-winter-2023/neko_quiz) | 13m0n4de |
+| [蟹皇堡秘方](challenges/misc/cyberchef_recipe/README.md) | Normal | [附件](challenges/misc/cyberchef_recipe/attachments) | [源代码](challenges/misc/cyberchef_recipe/build) | -                                                                                   | 13m0n4de |
+| [ksks 的小夜曲](challenges/misc/midi/README.md)          | Medium | [附件](challenges/misc/midi/attachments)             | [源代码](challenges/misc/midi/build)             | -                                                                                   | 13m0n4de |
 
 ### Reverse
 
-| 题目描述与题解                                          | 难度   | 文件、源代码                                                  | 镜像                                                                           | 出题人   |
-|:--------------------------------------------------------|:-------|:--------------------------------------------------------|:-------------------------------------------------------------------------------|:---------|
-| [圣诞礼物](challenges/reverse/christmas_gift/README.md) | Easy   | [文件、源代码](challenges/reverse/christmas_gift/attachments) | -                                                                              | 13m0n4de |
-| [CGI](challenges/reverse/CGI/README.md)                 | Normal | [文件、源代码](challenges/reverse/CGI/build)                  | [svuctf-winter-2023/cgi](https://ghcr.io/svuctf/svuctf-winter-2023/cgi:latest) | pn1fg    |
-| [Golang](challenges/reverse/Golang/README.md)           | Medium | [文件、源代码](challenges/reverse/Golang/build)               | -                                                                              | pn1fg    |
-| [solver](challenges/reverse/Solver/README.md)           | Medium | [文件、源代码](challenges/reverse/Solver/build)               | -                                                                              | pn1fg    |
+| 题目描述与题解                                          | 难度   | 附件                                                  | 源代码                                    | 镜像                                                                           | 出题人   |
+|:--------------------------------------------------------|:-------|:------------------------------------------------------|:------------------------------------------|:-------------------------------------------------------------------------------|:---------|
+| [圣诞礼物](challenges/reverse/christmas_gift/README.md) | Easy   | [附件](challenges/reverse/christmas_gift/attachments) | -                                         | -                                                                              | 13m0n4de |
+| [CGI](challenges/reverse/CGI/README.md)                 | Normal | [附件](challenges/reverse/CGI/attachments)            | [源代码](challenges/reverse/CGI/build)    | [svuctf-winter-2023/cgi](https://ghcr.io/svuctf/svuctf-winter-2023/cgi:latest) | pn1fg    |
+| [Golang](challenges/reverse/Golang/README.md)           | Medium | [附件](challenges/reverse/Golang/attachments)         | [源代码](challenges/reverse/Golang/build) | -                                                                              | pn1fg    |
+| [solver](challenges/reverse/Solver/README.md)           | Medium | [附件](challenges/reverse/Solver/attachments)         | [源代码](challenges/reverse/Solver/build) | -                                                                              | pn1fg    |
 
 ### Pwn
 
-| 题目描述与题解                              | 难度   | 文件、源代码                                 | 镜像                                                                                   | 出题人   |
-|:--------------------------------------------|:-------|:---------------------------------------|:---------------------------------------------------------------------------------------|:---------|
-| [nc](challenges/pwn/nc/README.md)           | Easy   | [文件、源代码](challenges/pwn/nc/build)      | [svuctf-winter-2023/nc](https://ghcr.io/svuctf/svuctf-winter-2023/nc:latest)           | 13m0n4de |
-| [Candy](challenges/pwn/candy/README.md)     | Normal | [文件、源代码](challenges/pwn/candy/build)   | [svuctf-winter-2023/candy](https://ghcr.io/svuctf/svuctf-winter-2023/candy)            | pn1fg    |
-| [babyrop](challenges/pwn/babyrop/README.md) | Normal | [文件、源代码](challenges/pwn/babyrop/build) | [svuctf-winter-2023/babyrop](https://ghcr.io/svuctf/svuctf-winter-2023/babyrop)        | pn1fg    |
-| [flipper](challenges/pwn/flipper/README.md) | Medium | [文件、源代码](challenges/pwn/flipper/build) | [svuctf-winter-2023/flipper](https://ghcr.io/svuctf/svuctf-winter-2023/flipper:latest) | 13m0n4de |
+| 题目描述与题解                              | 难度   | 附件                                       | 源代码                                 | 镜像                                                                                   | 出题人   |
+|:--------------------------------------------|:-------|:-------------------------------------------|:---------------------------------------|:---------------------------------------------------------------------------------------|:---------|
+| [nc](challenges/pwn/nc/README.md)           | Easy   | -                                          | [源代码](challenges/pwn/nc/build)      | [svuctf-winter-2023/nc](https://ghcr.io/svuctf/svuctf-winter-2023/nc:latest)           | 13m0n4de |
+| [Candy](challenges/pwn/candy/README.md)     | Normal | [附件](challenges/pwn/candy/attachments)   | [源代码](challenges/pwn/candy/build)   | [svuctf-winter-2023/candy](https://ghcr.io/svuctf/svuctf-winter-2023/candy)            | pn1fg    |
+| [babyrop](challenges/pwn/babyrop/README.md) | Normal | [附件](challenges/pwn/babyrop/attachments) | [源代码](challenges/pwn/babyrop/build) | [svuctf-winter-2023/babyrop](https://ghcr.io/svuctf/svuctf-winter-2023/babyrop)        | pn1fg    |
+| [flipper](challenges/pwn/flipper/README.md) | Medium | [附件](challenges/pwn/flipper/attachments) | [源代码](challenges/pwn/flipper/build) | [svuctf-winter-2023/flipper](https://ghcr.io/svuctf/svuctf-winter-2023/flipper:latest) | 13m0n4de |
 
 ### Crypto
 
-| 题目描述与题解                                       | 难度   | 文件、源代码                                             | 镜像 | 出题人 |
-|:-----------------------------------------------------|:-------|:---------------------------------------------------|:-----|:-------|
-| [签到](challenges/crypto/qiandao/README.md)          | Easy   | [文件、源代码](challenges/crypto/qiandao/attachments)    | -    | Cee    |
-| [Simple-RSA](challenges/crypto/simple_rsa/README.md) | Normal | [文件、源代码](challenges/crypto/simple_rsa/attachments) | -    | Cee    |
-| [Ez_DSA](challenges/crypto/Ez_DSA/README.md)         | Normal | [文件、源代码](challenges/crypto/Ez_DSA/attachments)     | -    | Cee    |
-| [变异凯撒](challenges/crypto/BY_Caesar/README.md)    | Normal | [文件、源代码](challenges/crypto/BY_Caesar/attachments)  | -    | Cee    |
+| 题目描述与题解                                       | 难度   | 附件                                             | 源代码 | 镜像 | 出题人 |
+|:-----------------------------------------------------|:-------|:-----------------------------------------------|:-------|:-----|:-------|
+| [签到](challenges/crypto/qiandao/README.md)          | Easy   | [附件](challenges/crypto/qiandao/attachments)    | -      | -    | Cee    |
+| [Simple-RSA](challenges/crypto/simple_rsa/README.md) | Normal | [附件](challenges/crypto/simple_rsa/attachments) | -      | -    | Cee    |
+| [EZ_DSA](challenges/crypto/Ez_DSA/README.md)         | Normal | [附件](challenges/crypto/Ez_DSA/attachments)     | -      | -    | Cee    |
+| [变异凯撒](challenges/crypto/BY_Caesar/README.md)    | Normal | [附件](challenges/crypto/BY_Caesar/attachments)  | -      | -    | Cee    |
 
 ### Web
 
-| 题目描述与题解                                           | 难度   | 文件、源代码                                         | 镜像                                                                                                   | 出题人   |
-|:---------------------------------------------------------|:-------|:-----------------------------------------------|:-------------------------------------------------------------------------------------------------------|:---------|
-| [上传？上传！](challenges/web/ez_upload/README.md)         | Easy   | [文件、源代码](challenges/web/ez_upload/build)       | [svuctf-winter-2023/ez_upload](https://ghcr.io/svuctf/svuctf-winter-2023/ez_upload:latest)             | Cee      |
-| [题解分享频道](challenges/web/writeup_channel/README.md) | Normal | [文件、源代码](challenges/web/writeup_channel/build) | [svuctf-winter-2023/writeup_channel](https://ghcr.io/svuctf/svuctf-winter-2023/writeup_channel:latest) | 13m0n4de |
-| [FlagServer](challenges/web/flagserver/README.md)        | Medium | [文件、源代码](challenges/web/flagserver/build)      | [svuctf-winter-2023/flagserver](https://ghcr.io/svuctf/svuctf-winter-2023/flagserver:latest)           | 13m0n4de |
-| [热血沸腾的组合技](challenges/web/tonyenc/README.md)     | Medium | [文件、源代码](challenges/web/tonyenc/build)         | [svuctf-winter-2023/tonyenc](https://ghcr.io/svuctf/svuctf-winter-2023/tonyenc:latest)                 | 13m0n4de |
+| 题目描述与题解                                           | 难度   | 附件                                          | 源代码                                         | 镜像                                                                                                   | 出题人   |
+|:---------------------------------------------------------|:-------|:----------------------------------------------|:-----------------------------------------------|:-------------------------------------------------------------------------------------------------------|:---------|
+| [上传？上传！](challenges/web/ez_upload/README.md)       | Easy   | -                                             | [源代码](challenges/web/ez_upload/build)       | [svuctf-winter-2023/ez_upload](https://ghcr.io/svuctf/svuctf-winter-2023/ez_upload:latest)             | Cee      |
+| [题解分享频道](challenges/web/writeup_channel/README.md) | Normal | -                                             | [源代码](challenges/web/writeup_channel/build) | [svuctf-winter-2023/writeup_channel](https://ghcr.io/svuctf/svuctf-winter-2023/writeup_channel:latest) | 13m0n4de |
+| [FlagServer](challenges/web/flagserver/README.md)        | Medium | [附件](challenges/web/flagserver/attachments) | [源代码](challenges/web/flagserver/build)      | [svuctf-winter-2023/flagserver](https://ghcr.io/svuctf/svuctf-winter-2023/flagserver:latest)           | 13m0n4de |
+| [热血沸腾的组合技](challenges/web/tonyenc/README.md)     | Medium | -                                             | [源代码](challenges/web/tonyenc/build)         | [svuctf-winter-2023/tonyenc](https://ghcr.io/svuctf/svuctf-winter-2023/tonyenc:latest)                 | 13m0n4de |
 
 ## 难度与分值
 
 由于这次比赛更多是训练性质，只把题目简单地分了三档，不能完全代表题目难度。
 
 | 题目难度         | Easy | Normal | Medium |
-|:-------------|:-----|:-------|:-------|
+|:-----------------|:-----|:-------|:-------|
 | 题目分值         | 500  | 800    | 1000   |
 | 题目最低分值比例 | 50%  | 50%    | 50%    |
 | 题目最低分值     | 250  | 400    | 500    |
@@ -127,10 +127,10 @@ player-write-ups/                   # 来自选手的 write-up
 
 题解格式可以参考下方示例。
 
-| write-up                                        | 包含题目                                             |
-|:------------------------------------------------|:-------------------------------------------------|
+| write-up                                        | 包含题目                                                    |
+|:------------------------------------------------|:------------------------------------------------------------|
 | [freedom](./player-write-ups/freedom/README.md) | 猫娘问答、蟹皇堡秘方、esrever、签到、变异凯撒、上传？上传！ |
-| [示例](./player-write-ups/example/README.md)    | 题目一、题目二、题目...                                |
+| [示例](./player-write-ups/example/README.md)    | 题目一、题目二、题目...                                     |
 
 ## 往届比赛
 
